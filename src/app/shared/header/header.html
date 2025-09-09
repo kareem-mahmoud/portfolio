@@ -10,7 +10,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto" ngSkipHydration="true">
+                    <ul class="navbar-nav ms-auto">
+                        <li>s</li>
                         @for(link of headerLinks(); track $index) {
                             <li class="nav-item">
                                 <a class="nav-link text-color_white">
@@ -19,6 +20,11 @@
                                 </a>
                             </li>
                         }
+                        <li class="nav-item">
+                            <button (click)="toggleTheme()">
+                            {{ darkLabel() ? '☀️ Light' : '🌙 Dark' }}
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </nav>

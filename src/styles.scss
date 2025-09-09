@@ -1,11 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 // colors
+// @import './colors';
+
 $main-color: #282C33;
 $primary-color: #C778DD;
 $secondary-color: #89DDFF;
 $grey-color: #ABB2BF;
 $white-color: #FFFFFF;
-
+:root {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+}
+body.dark-mode {
+  --background-color: #333333;
+  --text-color: #ffffff;
+  --button-bg: #6c757d;
+  --button-text: #ffffff;
+}
 
 *,*::after,*::before{
   margin:0;
