@@ -1,0 +1,58 @@
+<p>projects works!</p>
+<section class="projects_section container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-color_white">
+            <section class="title_container ">
+                <div class="row">
+                    <div class="col-md-12 position-relative">
+                        <h2 class="position-relative m-0 title">
+                            <span class="d-inline-block mark_color">#</span>
+                            <span class="d-inline-block text-color_white">Projects</span>
+                        </h2>
+                        <span class="d-inline-block position-absolute text-color_white view_all">
+                            View all ~~>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <section class="projects_container">
+                <div class="row">
+                    @for(project of projectsList(); track $index) {
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="item mb-5 h-100">
+                            <div class="img_box">
+                                <img src="{{project.imgUrl}}" alt="{{project.name}}">
+                            </div>
+                            <div class="item_content">
+                                <div class="skills p-3">
+                                    @for(skill of project.skills; track $index) {
+                                        <span class="d-inline-block text-color_gray" [ngClass]="{'ms-2': $index !== 0}">
+                                            {{skill}}
+                                        </span>
+                                    }
+                                </div>
+                                <h4 class="text-color_white p-3 m-0">{{project.name}}</h4>
+                                <p class="text-color_gray p-3 m-0 pt-0">{{project.description}}</p>
+                                <div class="item_controls p-3">
+                                @if(project.liveFlag === true) {
+                                    <a [href]="project.liveUrl" class="text-color_white fs-6 d-inline-block live_btn"
+                                       aria-label="link to live project"
+                                       target="_blank"
+                                    >Live <~></a>
+                                }
+                                </div>
+                                
+                                @if(project.category !== 'app') {
+                                    <p>{{project.category}}</p>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+            </section>
+        </div> 
+    </div>
+</section>
+

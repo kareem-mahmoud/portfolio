@@ -1,0 +1,67 @@
+@import '../../../colors';
+
+
+.projects_section {
+    .title_container {
+        .title {
+            &::before {
+                content: "";
+                position: absolute;
+                top: 22px;
+                left: 190px;
+                width: calc(100% - 690px);
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        .view_all {
+            top: 8px;
+            right: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                color: $primary-color !important;
+            }
+        }
+        margin-bottom: 40px;
+    }
+    .projects_container {
+        .item {
+            border: 1px solid $grey-color;
+            .img_box {
+                border-bottom: 1px solid $grey-color;
+                overflow: hidden;
+                img {
+                    display: block;
+                    width: 100%;
+                    min-height: 200px;
+                    object-fit: cover;
+                    object-position: center;
+                    margin-bottom: -1px;
+                   
+                }
+            }
+            .item_content {
+                .skills {
+                    border-bottom: 1px solid $grey-color;
+                }
+                .item_controls {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .live_btn {
+                        padding: 8px 12px;
+                        border: 1px solid $primary-color;
+                        text-decoration: none;
+                        transition: all 0.3s ease-in-out;
+                        &:hover {
+                            background-color: $primary-color;
+                            color: $white-color !important;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -10,7 +10,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto" ngSkipHydration="true">
                         @for(link of headerLinks(); track $index) {
                             <li class="nav-item">
                                 <a class="nav-link text-color_white">
@@ -25,3 +25,4 @@
         </div>
     </div>
 </header>
+
