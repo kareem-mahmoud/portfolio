@@ -12,3 +12,4 @@ export interface Project {
     liveFlag: boolean,
     liveUrl: State
 }
+

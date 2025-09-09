@@ -18,7 +18,8 @@ export class Footer {
       { icon: 'github.svg', url: 'https://github.com/Kareem-Mahmoud' },
     ]},
     
-  ]);
+  ]); 
+  
 
 
 }

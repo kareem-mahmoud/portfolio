@@ -5,7 +5,7 @@ import { Project } from '../../module/app-module';
   providedIn: 'root'
 })
 export class ProjectServices {
-  
+
   
   private projects: Project[] = [
     {

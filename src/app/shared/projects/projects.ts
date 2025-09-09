@@ -15,8 +15,6 @@ import { CommonModule } from '@angular/common';
 })
 export class Projects implements OnInit {
 
-
-
   private projectsService = inject(ProjectServices);
   projectsList = signal<Project[]>([]);
 
