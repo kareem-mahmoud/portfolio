@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ThemeService } from '../../services/theme/theme-service';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +10,10 @@ import { Component, signal } from '@angular/core';
 })
 export class Header {
 
+  
+  private themeService = inject(ThemeService);
+  darkLabel = signal(this.themeService.isDarkMode());
+
   logo = signal<string>('km.png');
   headerLinks = signal<any>([
     { name: 'Home', link: '/' },
@@ -16,5 +21,9 @@ export class Header {
     { name: 'About-me', link: '/about-me' },
     { name: 'Contacts', link: '/contacts' },
   ])
+
+  toggleTheme(): void {
+    this.themeService.toggleDarkMode();
+  }
 
 }
