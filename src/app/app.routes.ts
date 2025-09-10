@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
+import { Home } from './home/home';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: () => import('./home/home').then( m => m.Home) }
+    { path: 'home', component: Home }
 ];
