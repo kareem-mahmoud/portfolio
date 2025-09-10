@@ -9,7 +9,7 @@ import { Component, inject, signal } from '@angular/core';
 })
 export class Header {
 
-  darkLabel = 'k'
+  darkLabel = 'k';
 
   logo = signal<string>('km.png');
   headerLinks = signal<any>([
