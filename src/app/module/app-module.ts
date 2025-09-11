@@ -20,3 +20,13 @@ export interface Skills {
     category: Type,
     items: string[]
 }
+
+
+
+
+export const nav = [
+    { name: 'Home', link: '/' },
+    { name: 'Works', link: '/works' },
+    { name: 'About-me', link: '/about-me' },
+    { name: 'Contacts', link: '/contacts' },
+  ]

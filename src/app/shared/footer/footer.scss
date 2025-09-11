@@ -1,0 +1,11 @@
+@import '../../../colors';
+
+.footer {
+    border-top: 1px solid $grey-color;
+    .info_box {
+        img.logo {
+            width: 70px;
+            filter: invert(100%) !important;
+        }
+    }
+}

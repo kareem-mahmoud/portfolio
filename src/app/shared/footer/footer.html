@@ -1,17 +1,44 @@
-<footer>
+<footer class="footer container-fluid pt-5">
     <div class="footer-container container bg-color mt-3">
         <div class="row">
             <div class="col-md-4">
                 <div class="info_box">
+                    <img [src]="profile[4].logo" alt="logo" class="logo mb-3">
+                    <p class="mb-0 text-color_white">
+                        {{profile[3].info}}
+                    </p>
+                </div>
+                <div class="icons">
+                    <!-- <a [href]="profile[5][0].url" target="_blank">
+                        <img [src]="profile[5][0].icon" alt="{{profile[5][0].name}}">
+                        <span>{{profile[5][0].name}}</span>
+                    </a>
+                    <a [href]="profile[5][1].url" target="_blank">
+                        <img [src]="profile[5][1].icon" alt="{{profile[5][1].name}}">
+                        <span>{{profile[5][1].name}}</span>
+                    </a> -->
                     
                 </div>
             </div>
             <div class="col-md-4">
-
+                <ul class="navbar-nav ms-auto ml-5">
+                    @for(link of footerLinks(); track $index) {
+                        <li class="nav-item">
+                            <a class="nav-link text-color_white">
+                                <span class="d-inline-block mark_color">#</span>
+                                <span class="d-inline-block text-color_white">{{link.name}}</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
             </div>
             <div class="col-md-4">
 
             </div>
+            <div class="col-md-12 mt-5 mb-5">
+                <p class="text-color_gray">© Copyright 2025. Made by {{profile[0].title}}</p>
+            </div>
         </div> 
     </div>
+
 </footer>

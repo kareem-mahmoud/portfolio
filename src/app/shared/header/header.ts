@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { nav } from '../../module/app-module';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,6 @@ export class Header {
   darkLabel = 'k';
 
   logo = signal<string>('km.png');
-  headerLinks = signal<any>([
-    { name: 'Home', link: '/' },
-    { name: 'Works', link: '/works' },
-    { name: 'About-me', link: '/about-me' },
-    { name: 'Contacts', link: '/contacts' },
-  ])
+  headerLinks = signal<any>(nav)
 
 }
