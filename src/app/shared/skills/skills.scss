@@ -17,6 +17,29 @@
         margin-bottom: 40px;
     }
     .skills_container {
+        .item {
 
+        }
+        .skills_box {
+            .item {
+                border: 1px solid $grey-color;
+                .item_title {
+                    border-bottom: 1px solid $grey-color;
+                }
+                .item_content {
+
+                }
+            }
+        }
+    }
+}
+.skills_section_2 {
+    .item {
+        border: 1px solid $grey-color;
+        .item_title {
+            border-bottom: 1px solid $grey-color;
+        }
+        .item_content {
+        }
     }
 }
