@@ -11,7 +11,6 @@ import { filter } from 'rxjs';
 export class Skills {
 
   skillsImg = signal<string>('skills.png');
-  customUrlSignal = signal('/home');
   currentUrl = signal('');
 
   constructor(private router: Router) {
