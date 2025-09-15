@@ -4,7 +4,7 @@ import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
   selector: 'app-footer',
-  imports: [ContactForm],
+  imports: [],
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
