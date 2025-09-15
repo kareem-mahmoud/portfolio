@@ -6,12 +6,11 @@ import { Project } from '../../module/app-module';
 })
 export class ProjectServices {
 
-  
   private projects: Project[] = [
     {
       id: 1,
       name: "Africano Pro",
-      imgUrl: "placeholder.png",
+      imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
       category: "app",
       skills: ["html", "css", "js"],
@@ -21,7 +20,7 @@ export class ProjectServices {
     {
       id: 2,
       name: "Africano Pro 2",
-      imgUrl: "placeholder.png",
+      imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
       category: "app",
       skills: ["html", "css", "js"],
@@ -31,7 +30,7 @@ export class ProjectServices {
     {
       id: 3,
       name: "Africano Pro 3",
-      imgUrl: "placeholder.png",
+      imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
       category: "project",
       skills: ["html", "css", "js"],
@@ -41,7 +40,7 @@ export class ProjectServices {
     {
       id: 4,
       name: "Africano Pro 4",
-      imgUrl: "imgUrl",
+      imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
       category: "app",
       skills: ["html", "css", "js"],
@@ -51,7 +50,7 @@ export class ProjectServices {
   ];
 
   getHomeProjects(): Project[] {
-    return this.projects.slice(0, 3);
+    return this.projects.slice(0, 4);
   }
 
   getProjects(): Project[] {

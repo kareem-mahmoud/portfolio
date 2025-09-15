@@ -1,6 +1,8 @@
 
 type Category = 'app' | 'project';
 type State = 'live' | 'gitHub';
+type Type =  'Languages' | 'Frontend' | 'Backend' | 'Framework' | 'Database' | 'Other';
+
 
 export interface Project {
     id: number,
@@ -13,3 +15,18 @@ export interface Project {
     liveUrl: State
 }
 
+export interface Skills {
+    id: number,
+    category: Type,
+    items: string[]
+}
+
+
+
+
+export const nav = [
+    { name: 'Home', link: '/' },
+    { name: 'Works', link: '/works' },
+    { name: 'About-me', link: '/about-me' },
+    { name: 'Contacts', link: '/contacts' },
+  ]

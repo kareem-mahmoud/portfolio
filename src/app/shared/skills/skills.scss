@@ -1,0 +1,45 @@
+@import '../../../colors';
+
+
+.skills_section {
+    .title_container {
+        .title {
+            &::before {
+                content: "";
+                position: absolute;
+                top: 22px;
+                left: 190px;
+                width: calc(100% - 690px);
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        margin-bottom: 40px;
+    }
+    .skills_container {
+        .item {
+
+        }
+        .skills_box {
+            .item {
+                border: 1px solid $grey-color;
+                .item_title {
+                    border-bottom: 1px solid $grey-color;
+                }
+                .item_content {
+
+                }
+            }
+        }
+    }
+}
+.skills_section_2 {
+    .item {
+        border: 1px solid $grey-color;
+        .item_title {
+            border-bottom: 1px solid $grey-color;
+        }
+        .item_content {
+        }
+    }
+}
