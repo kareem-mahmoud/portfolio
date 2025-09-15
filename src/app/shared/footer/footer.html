@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <ul class="navbar-nav ms-auto ml-5">
+                <ul class="navbar-nav nav_box">
                     @for(link of footerLinks(); track $index) {
                         <li class="nav-item">
                             <a class="nav-link text-color_white">
@@ -33,7 +33,16 @@
                 </ul>
             </div>
             <div class="col-md-4">
-
+                <div class="contact_box">
+                    <p class="text-color_white mb-3 mt-5">{{profile[6].hireMe}}</p>
+                    <a href="mailto:kareem.mahmoud.abd.elhannan@gmail.com?subject=Service%20Inquiry&body=Hello%20Kareem," 
+                       class="btn btn-primary inquire_btn"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                    >
+                        Inquire a Service ->
+                    </a>
+                </div>
             </div>
             <div class="col-md-12 mt-5 mb-5">
                 <p class="text-color_gray">© Copyright 2025. Made by {{profile[0].title}}</p>
