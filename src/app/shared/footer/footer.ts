@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { nav } from '../../module/app-module';
-import { ContactForm } from "../contact-form/contact-form";
+// import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
   selector: 'app-footer',
