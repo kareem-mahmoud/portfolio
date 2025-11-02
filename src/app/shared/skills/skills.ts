@@ -1,25 +1,27 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-skills',
   imports: [],
+  standalone: true,
   templateUrl: './skills.html',
-  styleUrl: './skills.scss'
+  styleUrl: './skills.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Skills {
-
+  
+  private router = inject(Router);
   skillsImg = signal<string>('skills.png');
   currentUrl = signal('');
 
-  constructor(private router: Router) {
-    // Subscribe to router events and update currentUrl signal
+  constructor() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.currentUrl.set(event.urlAfterRedirects);
-    });
+    }); // Subscribe to router events and update currentUrl signal
   }
 
 
