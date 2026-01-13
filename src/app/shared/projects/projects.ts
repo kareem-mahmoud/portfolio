@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { Project } from '../../module/app-module';
 import { ProjectServices } from '../../services/projects/project-services'
 
@@ -7,11 +7,13 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
+  standalone: true,
   imports: [
     CommonModule
   ],
   templateUrl: './projects.html',
-  styleUrl: './projects.scss'
+  styleUrl: './projects.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Projects implements OnInit {
 

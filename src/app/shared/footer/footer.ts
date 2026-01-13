@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { nav } from '../../module/app-module';
-import { ContactForm } from "../contact-form/contact-form";
+// import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
   selector: 'app-footer',
+  standalone: true,
   imports: [],
   templateUrl: './footer.html',
-  styleUrl: './footer.scss'
+  styleUrl: './footer.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Footer {
 

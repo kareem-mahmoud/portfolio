@@ -1,18 +1,25 @@
-import { Component, inject, signal } from '@angular/core';
-import { nav } from '../../module/app-module';
+import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
+import { nav, NavItem } from '../../module/app-module';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [],
   templateUrl: './header.html',
-  styleUrl: './header.scss'
+  styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
 
-  darkLabel = 'k';
-
+  isScrolled = signal<boolean>(false);
   logo = signal<string>('km.png');
-  headerLinks = signal<any>(nav)
+  headerLinks = signal<NavItem[]>(nav)
+
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.isScrolled.set(scrollPosition > 50);
+  }
 
 }

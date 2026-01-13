@@ -21,10 +21,13 @@ export interface Skills {
     items: string[]
 }
 
+export interface NavItem {
+  name: string;
+  link: string;
+}
 
 
-
-export const nav = [
+export const nav: NavItem[] = [
     { name: 'Home', link: '/' },
     { name: 'Works', link: '/works' },
     { name: 'About-me', link: '/about-me' },

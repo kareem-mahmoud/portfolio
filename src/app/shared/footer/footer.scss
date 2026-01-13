@@ -1,7 +1,22 @@
 @import '../../../colors';
 
 .footer {
-    border-top: 1px solid $grey-color;
+    .footer-container {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            height: 1px;
+            width: 100%;
+            background-color: red;
+        }
+        .row {
+            border-top: 1px solid $grey-color;
+        }
+    }
+    
     .info_box {
         img.logo {
             width: 70px;
