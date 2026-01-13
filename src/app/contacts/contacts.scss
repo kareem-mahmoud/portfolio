@@ -1,0 +1,110 @@
+@import '../../colors'; 
+
+
+.contact-me_section {
+    .title_container {
+        .title {
+            &::before  {
+                content: "";
+                position: absolute;
+                top: 22px;
+                left: 190px;
+                width: calc(100% - 690px);
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        margin-bottom: 40px;
+    }
+}
+
+.content_container {
+    .data_box {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: 10px;
+        flex-wrap: wrap;
+        .item {
+            border: 1px solid $grey-color;
+            .item_title {
+                border-bottom: 1px solid $grey-color;
+            }
+            .item_content {
+            }
+        }
+    }
+}
+
+.social {
+    margin-bottom: 50px;
+    .box {
+
+    }
+}
+    
+.form_box {
+    form {
+       background-color: transparent; 
+       border: 1px solid $grey-color;
+       padding: 20px;
+       .form-group {
+           background-color: transparent;
+           input[type="text"],
+           input[type="email"], textarea {
+                background-color: transparent !important;
+                background: transparent !important;
+                border: 0px solid $grey-color;
+                height: 46px;
+                width: 100%;
+                border-bottom: 1px solid $grey-color;
+                color: $grey-color;
+           } 
+           textarea {
+                resize: none;
+                height: 100px;
+                padding-top: 10px;
+                border-bottom: 0px solid $grey-color;
+           }
+           input[type="text"]::placeholder,
+           input[type="email"]::placeholder, textarea::placeholder {
+                color: $grey-color;
+           }
+           input[type="text"]:focus,
+           input[type="email"]:focus, textarea:focus {
+                outline: none;
+                box-shadow: none;
+                border: unset;
+                color: $grey-color;
+           }
+           button {
+                position: relative;
+                padding: 8px 12px;
+                border: 1px solid #C778DD;
+                text-decoration: none;
+                transition: all 0.3s ease-in-out;
+                background-color: #C778DD;
+                color: #FFFFFF !important;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: -1px;
+                    right: 0px;
+                    width: 20px;
+                    height: 20px;
+                    background-color: transparent;
+                    transition: all 0.3s ease-in-out;
+                }
+                &:hover::before , &:focus::before {
+                    background-color: #C778DD;
+                    right: -25px;
+                }
+           }
+       }
+    }
+}
+    
+    
+    
+    
