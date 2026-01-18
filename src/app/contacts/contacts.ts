@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-
-import { form, FormField, Field } from '@angular/forms/signals';
+import { Component, signal } from '@angular/core';
+import { form,} from '@angular/forms/signals';
 import { Router } from '@angular/router';
 
 interface Contact {
@@ -13,10 +12,9 @@ interface Contact {
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [Field],
+  imports: [],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
 
