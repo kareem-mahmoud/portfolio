@@ -1,21 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
-import { form, FormField } from '@angular/forms/signals';
+import { form, FormField, Field } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 
 interface Contact {
   name: string;
   phone: string;
   email: string;
-  Inquire?: string;
+  // Inquire?: string;
 }
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [FormField],
+  imports: [Field],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Contacts {
 
@@ -32,39 +33,41 @@ export class Contacts {
   contactModel = signal<Contact>({
       name: '',
       phone: '',
-      email: '',
-      Inquire: ''
+      email: ''
   });
 
   contactsDetails: any[] = []; 
   
   contactForm = form(this.contactModel);
-  constructor(private router: Router) {}
   onSubmit() {
-    if (this.contactForm()) {
-      // Submit the form data to Formspree
-      fetch('https://formspree.io/f/xdaaoyyp', {
-        method: 'POST',
-        body: this.contactForm().toString(),
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          // Handle successful response
-          console.log('Form submitted successfully');
-          // Redirect to your Contact Us page
-          this.router.navigate(['/contact-us']);
-        } else {
-          // Handle errors
-          console.error('Error submitting form', response);
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
-  }  
+
+  }
+  // constructor(private router: Router) {}
+  // onSubmit() {
+  //   if (this.contactForm()) {
+  //     // Submit the form data to Formspree
+  //     fetch('https://formspree.io/f/xdaaoyyp', {
+  //       method: 'POST',
+  //       body: this.contactForm().toString(),
+  //       headers: {
+  //         'Accept': 'application/json'
+  //       }
+  //     })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         // Handle successful response
+  //         console.log('Form submitted successfully');
+  //         // Redirect to your Contact Us page
+  //         this.router.navigate(['/contact-us']);
+  //       } else {
+  //         // Handle errors
+  //         console.error('Error submitting form', response);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.error('Error:', error);
+  //     });
+  //   }
+  // }  
 
 }
