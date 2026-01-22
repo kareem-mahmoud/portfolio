@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ComponentsData} from '../../module/app-module';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
+import { ComponentsData } from '../../module/app-module';
 
 @Component({
   selector: 'app-first-content',
@@ -9,8 +9,16 @@ import { ComponentsData} from '../../module/app-module';
   styleUrl: './first-content.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FirstContent {
+export class FirstContent implements OnInit {
 
-  firstContentImg = signal<string>(ComponentsData[0].firstContent.firstContentImg);
+
+  firstContent = signal<any>(ComponentsData[0].firstContent);
+
+
+  ngOnInit(): void {
+
+  }
+
+
 
 }

@@ -4,35 +4,41 @@
             <div class="col-md-12">
                 <div class="content-wrapper">
                     <section class="inner-content_container">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="box h-100 mt-5">
-                                        <h1 class="text-color_gray mb-3">
-                                            <span class="text-color_white ">
-                                                Kareem is a Senior UI Developer with 8+ &amp; 
-                                            </span>
-                                            <span class="mark_color">
-                                                [Angular] front-end developer based in cairo, Egypt.
-                                            </span>
-                                        </h1>
-                                        <p class="text-color_gray mb-5">He crafts responsive websites where technologies meet creativity.</p>
-                                        <a href="#" class="redirect_btn d-inline-block text-color_gray">Contact me -></a>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="box h-100 mt-5">
+                                    <h1 class="text-color_gray mb-3">
+                                        <span class="text-color_white">
+                                             {{firstContent().firstContentH1A}}
+                                        </span>
+                                        <span class="mark_color">
+                                            {{firstContent().firstContentH1B}}
+                                        </span>
+                                    </h1>
+                                    <p class="text-color_gray mb-5">
+                                        {{firstContent().firstContentP}}
+                                    </p>
+                                    <a [href]="firstContent().firstContentButtonURL" class="redirect_btn d-inline-block text-color_gray">
+                                        {{firstContent().firstContentButtonText}}
+                                    </a>
                                 </div>
+                            </div>
 
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="item mb-5 h-100">
-                                        <div class="img_box d-flex flex-column justify-content-end align-items-center h-100">
-                                            <img src="{{firstContentImg()}}" alt="me">
-                                            <div class="color_box py-2 px-3 border d-flex justify-content-center align-items-center">
-                                                <span class="d-flex"></span>
-                                                <span class="d-flex text-color_gray">Currently working as a freelancer.</span>
-                                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="item mb-5 h-100">
+                                    <div class="img_box d-flex flex-column justify-content-end align-items-center h-100">
+                                        <img [src]="firstContent().firstContentImg" alt="me">
+                                        <div class="color_box py-2 px-3 border d-flex justify-content-center align-items-center">
+                                            <span class="d-flex"></span>
+                                            <span class="d-flex text-color_gray">
+                                                {{firstContent().firstContentImgSlug}}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
