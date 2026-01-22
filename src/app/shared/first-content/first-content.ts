@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ComponentsData} from '../../module/app-module';
 
 @Component({
   selector: 'app-first-content',
@@ -9,4 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FirstContent {
+
+  firstContentImg = signal<string>(ComponentsData[0].firstContent.firstContentImg);
+
 }
