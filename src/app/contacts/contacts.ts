@@ -12,8 +12,6 @@ import { aboutMe } from '../module/app-module';
 export class Contacts {
 
   aboutMeText = signal<string>(aboutMe) ;
-  
-
   contactsDetails: any[] = []; 
   
 

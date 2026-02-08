@@ -4,6 +4,7 @@
     .content-container {
         .content-wrapper {
             .inner-content_container {
+                margin-bottom: 40px;;
                 .box {
                     a.redirect_btn {
                         padding: 8px 12px;
@@ -19,26 +20,30 @@
                 }
                 .item {
                     .img_box {
-                        img {
-                            position: relative;
-                            height: 340px;
-                            width: 100%;
-                            object-fit: contain;
-                            object-position: center;
-                        }
-                        .color_box {
+                        // img {
+                        //     position: relative;
+                        //     height: 340px;
+                        //     width: 100%;
+                        //     object-fit: contain;
+                        //     object-position: center;
+                        // }
+                        // .color_box {
 
-                            span:nth-child(1) {
-                                width: 20px;
-                                height: 20px;
-                                margin-right: 20px;
-                                background-color: $primary-color;
-                            }
-                            span:nth-child(2) {
-                                font-size: 14px;
-                                font-weight: 400;
+                        //     span:nth-child(1) {
+                        //         width: 20px;
+                        //         height: 20px;
+                        //         margin-right: 20px;
+                        //         background-color: $primary-color;
+                        //     }
+                        //     span:nth-child(2) {
+                        //         font-size: 14px;
+                        //         font-weight: 400;
                                 
-                            }
+                        //     }
+                        // }
+                        svg {
+                            width: 50% !important;
+                            height: 100% !important;   
                         }
                     }
                 }
