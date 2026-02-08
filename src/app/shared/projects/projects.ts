@@ -27,7 +27,6 @@ export class Projects implements OnInit {
 
   ngOnInit(): void {
     this.renderProjectsSection();
-    console.log(this.projectsList());
   }
 
 

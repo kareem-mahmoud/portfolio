@@ -9,16 +9,8 @@ import { ComponentsData } from '../../module/app-module';
   styleUrl: './first-content.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FirstContent implements OnInit {
-
+export class FirstContent {
 
   firstContent = signal<any>(ComponentsData[0].firstContent);
-
-
-  ngOnInit(): void {
-
-  }
-
-
 
 }

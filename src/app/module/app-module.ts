@@ -13,7 +13,7 @@ export const ComponentsData: any[] = [
         firstContent: {
             firstContentImg: 'profile.png',
             firstContentImgSlug: 'Currently working as a freelancer.',
-            firstContentH1A: 'Kareem is a Senior UI Developer with 8+ &amp;',
+            firstContentH1A: 'Kareem is a Senior UI Developer with 8+ years of experience.',
             firstContentH1B: '[Angular] front-end developer based in cairo, Egypt.',
             firstContentP: 'He crafts responsive websites where technologies meet creativity.',
             firstContentButtonText: 'Contact me ->',
