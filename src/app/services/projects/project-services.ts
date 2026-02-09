@@ -12,41 +12,50 @@ export class ProjectServices {
       name: "Africano Pro",
       imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
-      category: "app",
+      category: "Website",
+      stack: "WordPress",
       skills: ["html", "css", "js"],
+      state: "live",
       liveFlag: true,
-      liveUrl: "live"
+      liveUrl: "https://wwww.live.com"
     },
     {
-      id: 2,
+      id: 1,
       name: "Africano Pro 2",
       imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
-      category: "app",
+      category: "Other",
+      stack: "WordPress",
       skills: ["html", "css", "js"],
+      state: "live",
       liveFlag: false,
-      liveUrl: "live"
+      liveUrl: "https://wwww.live.com"
     },
     {
-      id: 3,
+      id: 1,
       name: "Africano Pro 3",
       imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
-      category: "project",
+      category: "Website",
+      stack: "WordPress",
       skills: ["html", "css", "js"],
+      state: "live",
       liveFlag: true,
-      liveUrl: "live"
+      liveUrl: "https://wwww.live.com"
     },
     {
-      id: 4,
+      id: 1,
       name: "Africano Pro 4",
       imgUrl: "placeholder.jpg",
       description: "lorem ipsum",
-      category: "app",
+      category: "Project",
+      stack: "WordPress",
       skills: ["html", "css", "js"],
-      liveFlag: true,
-      liveUrl: "live"
+      state: "live",
+      liveFlag: false,
+      liveUrl: "https://wwww.live.com"
     }
+
   ];
 
   getHomeProjects(): Project[] {
