@@ -10,14 +10,14 @@ export class ProjectServices {
     {
       id: 1,
       name: "Africano Pro",
-      imgUrl: "placeholder.jpg",
+      imgUrl: "africano-FI.png",
       description: "lorem ipsum",
       category: "Website",
       stack: "WordPress",
-      skills: ["html", "css", "js"],
+      skills: ["HTML5", "CSS", "JS", "jQuery", "PHP"],
       state: "live",
       liveFlag: true,
-      liveUrl: "https://wwww.live.com"
+      liveUrl: "https://africanosproperties.com/"
     },
     {
       id: 1,
