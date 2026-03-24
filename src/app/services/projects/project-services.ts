@@ -1,69 +1,25 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Project } from '../../module/app-module';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+const BASE_URL = 'http://portfolio-api.kimostarstarstar.workers.dev/api/projects';
+
+@Injectable(
+  // {
+  //   providedIn: 'root'
+  // }
+)
 export class ProjectServices {
 
-  private projects: Project[] = [
-    {
-      id: 1,
-      name: "Africano Pro",
-      imgUrl: "africano-FI.png",
-      description: "lorem ipsum",
-      category: "Website",
-      stack: "WordPress",
-      skills: ["HTML5", "CSS", "JS", "jQuery", "PHP"],
-      state: "live",
-      liveFlag: true,
-      liveUrl: "https://africanosproperties.com/"
-    },
-    {
-      id: 1,
-      name: "Africano Pro 2",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "Other",
-      stack: "WordPress",
-      skills: ["html", "css", "js"],
-      state: "live",
-      liveFlag: false,
-      liveUrl: "https://wwww.live.com"
-    },
-    {
-      id: 1,
-      name: "Africano Pro 3",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "Website",
-      stack: "WordPress",
-      skills: ["html", "css", "js"],
-      state: "live",
-      liveFlag: true,
-      liveUrl: "https://wwww.live.com"
-    },
-    {
-      id: 1,
-      name: "Africano Pro 4",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "Project",
-      stack: "WordPress",
-      skills: ["html", "css", "js"],
-      state: "live",
-      liveFlag: false,
-      liveUrl: "https://wwww.live.com"
-    }
+  http = inject(HttpClient);
 
-  ];
-
-  getHomeProjects(): Project[] {
-    return this.projects.slice(0, 4);
+  getHomeProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(BASE_URL);
   }
 
-  getProjects(): Project[] {
-    return this.projects;
-  }
+  // getProjects(): Project[] {
+  //   return this.projects;
+  // }
 
 }

@@ -1,0 +1,35 @@
+@import '../../../colors';
+
+
+.projects_section {
+    .title_container {
+        .title {
+            &::before {
+                content: "";
+                position: absolute;
+                top: 22px;
+                left: 190px;
+                width: calc(100% - 690px);
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        .view_all {
+            top: 8px;
+            right: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                color: $primary-color !important;
+            }
+        }
+        margin-bottom: 40px;
+    }
+    .projects_container {
+        app-project-card {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+}

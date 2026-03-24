@@ -2,6 +2,7 @@ import {
   ApplicationConfig, 
   provideAppInitializer, 
   provideBrowserGlobalErrorListeners, 
+  provideEnvironmentInitializer, 
   provideZonelessChangeDetection 
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -11,8 +12,11 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideEnvironmentInitializer(()  => {
+      console.log('provideEnvironmentInitializer(), from kareem profile');
+    }),
     provideAppInitializer(() => {
-      console.log('hello app from kareem profile');
+      console.log('provideAppInitializer(), from kareem profile');
     }),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),

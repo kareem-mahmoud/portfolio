@@ -1,5 +1,5 @@
 
-export const aboutMe: string = `Dedicated Specialist UI Developer with 8+ years of expertise 
+export const aboutMe = `Dedicated Specialist UI Developer with 8+ years of expertise 
                             in HTML, CSS, JavaScript, and UI/UX design. 
                             Skilled in building intuitive, 
                             user-centered interfaces that improve user experience and 
@@ -8,7 +8,7 @@ export const aboutMe: string = `Dedicated Specialist UI Developer with 8+ years 
                             cross-functional teams to exceed project objectives. 
                             Committed to continuous learning and delivering innovative, 
                             scalable web solutions.`;
-export const ComponentsData: any[] = [
+export const ComponentsData = [
     { 
         firstContent: {
             firstContentImg: 'profile.png',
