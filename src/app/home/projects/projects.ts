@@ -1,28 +1,28 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { Project } from '../../module/app-module';
 import { ProjectServices } from '../../services/projects/project-services'
-
-import { CommonModule } from '@angular/common';
+import { ProjectCard } from '../../shared/project-card/project-card';
 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [
-    CommonModule
-  ],
+  imports: [ProjectCard],
+  providers: [ProjectServices],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Projects implements OnInit {
 
-  private projectsService = inject(ProjectServices);
+  private projectsService = inject(ProjectServices, { self: true });
   projectsList = signal<Project[]>([]);
 
   renderProjectsSection() {
-    const projects = this.projectsService.getHomeProjects();
-    return this.projectsList.set(projects);
+    if (!this.projectsService) return;
+    this.projectsService.getHomeProjects().subscribe(projects => {
+      this.projectsList.set(projects);
+    });
   }
 
   ngOnInit(): void {

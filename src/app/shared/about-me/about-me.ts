@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { aboutMe, ComponentsData} from '../../module/app-module';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ComponentsData } from '../../module/app-module';
 
 
 @Component({
@@ -10,12 +10,8 @@ import { aboutMe, ComponentsData} from '../../module/app-module';
   styleUrl: './about-me.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutMe implements OnInit {
+export class AboutMe {
 
-  aboutMeText = signal(aboutMe);
-  aboutMeImg = signal(ComponentsData[0].aboutUs.aboutMeImg);
+  aboutMeContent = signal<any>(ComponentsData[0].aboutMe);
 
-  ngOnInit(): void {
-    
-  }
 }

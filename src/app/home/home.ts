@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Projects } from "../shared/projects/projects";
+import { Projects } from "./projects/projects";
 import { Skills } from "../shared/skills/skills";
 import { AboutMe } from '../shared/about-me/about-me';
-import { FirstContent } from "../shared/first-content/first-content";
+import { FirstContent } from "./first-content/first-content";
 
 @Component({
   selector: 'app-home',

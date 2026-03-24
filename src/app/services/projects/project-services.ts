@@ -1,60 +1,25 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Project } from '../../module/app-module';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+const BASE_URL = 'http://portfolio-api.kimostarstarstar.workers.dev/api/projects';
+
+@Injectable(
+  // {
+  //   providedIn: 'root'
+  // }
+)
 export class ProjectServices {
 
-  private projects: Project[] = [
-    {
-      id: 1,
-      name: "Africano Pro",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "app",
-      skills: ["html", "css", "js"],
-      liveFlag: true,
-      liveUrl: "live"
-    },
-    {
-      id: 2,
-      name: "Africano Pro 2",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "app",
-      skills: ["html", "css", "js"],
-      liveFlag: false,
-      liveUrl: "live"
-    },
-    {
-      id: 3,
-      name: "Africano Pro 3",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "project",
-      skills: ["html", "css", "js"],
-      liveFlag: true,
-      liveUrl: "live"
-    },
-    {
-      id: 4,
-      name: "Africano Pro 4",
-      imgUrl: "placeholder.jpg",
-      description: "lorem ipsum",
-      category: "app",
-      skills: ["html", "css", "js"],
-      liveFlag: true,
-      liveUrl: "live"
-    }
-  ];
+  http = inject(HttpClient);
 
-  getHomeProjects(): Project[] {
-    return this.projects.slice(0, 4);
+  getHomeProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(BASE_URL);
   }
 
-  getProjects(): Project[] {
-    return this.projects;
-  }
+  // getProjects(): Project[] {
+  //   return this.projects;
+  // }
 
 }

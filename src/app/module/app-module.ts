@@ -1,5 +1,5 @@
 
-export const aboutMe: string = `Dedicated Specialist UI Developer with 8+ years of expertise 
+export const aboutMe = `Dedicated Specialist UI Developer with 8+ years of expertise 
                             in HTML, CSS, JavaScript, and UI/UX design. 
                             Skilled in building intuitive, 
                             user-centered interfaces that improve user experience and 
@@ -8,7 +8,7 @@ export const aboutMe: string = `Dedicated Specialist UI Developer with 8+ years 
                             cross-functional teams to exceed project objectives. 
                             Committed to continuous learning and delivering innovative, 
                             scalable web solutions.`;
-export const ComponentsData: any[] = [
+export const ComponentsData = [
     { 
         firstContent: {
             firstContentImg: 'profile.png',
@@ -19,6 +19,12 @@ export const ComponentsData: any[] = [
             firstContentButtonText: 'Contact me ->',
             firstContentButtonURL: 'contacts',
         },
+        aboutMe: {
+            aboutMeDisc: aboutMe,
+            aboutMeImgURL: 'about-me.png',
+            aboutMeButtonText: 'Read more ->',
+            aboutMeUrl: 'about-me'
+        },
         contacts: {
 
         },
@@ -28,7 +34,8 @@ export const ComponentsData: any[] = [
     }
 ]
 
-type Category = 'app' | 'project';
+type Category = 'Mobile' | 'Project' | 'Website' | 'Other';
+type Stack = 'Angular' | 'React' | 'Vue' | 'Node.js' | 'WordPress' | 'Other';
 type State = 'live' | 'gitHub';
 type Type =  'Languages' | 'Frontend' | 'Backend' | 'Framework' | 'Database' | 'Other';
 
@@ -39,9 +46,11 @@ export interface Project {
     imgUrl: string,
     description: string,
     category: Category,
+    stack: Stack,
     skills: string[],
+    state: State,
     liveFlag: boolean,
-    liveUrl: State
+    liveUrl: string
 }
 
 export interface Skills {

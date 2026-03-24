@@ -12,22 +12,28 @@
                         </div>
                     </div>
                 </section>
-                <section class="about-me_container">
+                <section class="about-me_container mb-5">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="about-me_box h-100 mt-3">
                                 <p class="text-color_gray">Hello I'm a </p>
                                 <p class="text-color_gray mb-4">
-                                    {{aboutMeText()}}
+                                    {{aboutMeContent().aboutMeDisc}}
                                 </p>
-                                <a href="#" class="redirect_btn d-inline-block text-color_gray">Read more -></a>
+                                <a [href]="aboutMeContent().aboutMeUrl" class="redirect_btn d-inline-block text-color_gray">{{aboutMeContent().aboutMeButtonText}}</a>
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12">
                             <div class="item mb-5 h-100">
                                 <div class="img_box d-flex justify-content-center align-items-flex-start h-100">
-                                    <img src="{{aboutMeImg()}}" alt="About me">
+                                    <!-- <img [src]="aboutMeContent().aboutMeImgURL" alt="About me"> -->
+                                    <svg width="10" height="10" viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0.500000 0.000000 L0.500000 0.566745 C0.504946 0.269205 0.503297 0.114243 0.000000 0.000000 L0.000000 0.433255 C0.000000 0.746260 0.223858 1.000000 0.500000 1.000000 C0.776142 1.000000 1.000000 0.746260 1.000000 0.433255 L1.000000 0.000000 L0.500000 0.000000 Z"
+                                            fill="black"
+                                        />
+                                    </svg>
                                 </div>
                             </div>
                         </div>
