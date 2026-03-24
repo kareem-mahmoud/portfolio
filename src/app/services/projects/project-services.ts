@@ -14,12 +14,9 @@ export class ProjectServices {
 
   http = inject(HttpClient);
 
-  getHomeProjects(): Observable<Project[]> {
+  getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(BASE_URL);
   }
 
-  // getProjects(): Project[] {
-  //   return this.projects;
-  // }
 
 }

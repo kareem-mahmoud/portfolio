@@ -20,7 +20,7 @@ export class Projects implements OnInit {
 
   renderProjectsSection() {
     if (!this.projectsService) return;
-    this.projectsService.getHomeProjects().subscribe(projects => {
+    this.projectsService.getProjects().subscribe(projects => {
       this.projectsList.set(projects);
     });
   }
