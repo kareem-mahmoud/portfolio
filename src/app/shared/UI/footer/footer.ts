@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { nav } from '../../module/app-module';
+import { nav } from '../../../module/config/config';
 // import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
@@ -14,7 +14,7 @@ export class Footer {
 
   footerLinks = signal<any>(nav);
 
-  profile: any[] = [
+  profile = [
     { title: 'Kareem Mahmoud' },
     { email: 'Kareem.mahmoud.abd.elhannan@gmail.com' },
     { paragraph: 'Dedicated senior UI Developerwith 8+ years of experience.'},

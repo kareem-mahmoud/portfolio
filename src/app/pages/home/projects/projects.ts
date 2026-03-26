@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { Project } from '../../module/app-module';
-import { ProjectServices } from '../../services/projects/project-services'
-import { ProjectCard } from '../../shared/project-card/project-card';
+import { Project } from '../../../module/models/app-models';
+import { ProjectServices } from '../../../services/projects/project-services'
+import { ProjectCard } from '../../../shared/reusable/project-card/project-card';
 
 
 @Component({

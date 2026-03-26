@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ComponentsData } from '../../module/app-module';
+import { ComponentsData } from '../../module/content/data';
 
 
 @Component({
@@ -12,6 +12,6 @@ import { ComponentsData } from '../../module/app-module';
 })
 export class AboutMe {
 
-  aboutMeContent = signal<any>(ComponentsData[0].aboutMe);
+  aboutMeContent = signal(ComponentsData[0].aboutMe);
 
 }

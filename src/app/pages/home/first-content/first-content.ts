@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
-import { ComponentsData } from '../../module/app-module';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ComponentsData } from '../../../module/content/data';
 
 @Component({
   selector: 'app-first-content',
@@ -11,6 +11,6 @@ import { ComponentsData } from '../../module/app-module';
 })
 export class FirstContent {
 
-  firstContent = signal<any>(ComponentsData[0].firstContent);
+  firstContent = signal(ComponentsData[0].firstContent);
 
 }

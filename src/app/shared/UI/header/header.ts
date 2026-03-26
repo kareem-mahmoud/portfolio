@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
-import { nav, NavItem } from '../../module/app-module';
+import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
+import { nav, NavItem } from '../../../module/config/config';
 
 @Component({
   selector: 'app-header',

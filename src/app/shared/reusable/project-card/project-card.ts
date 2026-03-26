@@ -18,5 +18,6 @@ export class ProjectCard {
   projectLiveFlag = input(false);
   projectLiveUrl = input('');
   projectCategory = input('');
+  projectStack = input('');
 
 }
