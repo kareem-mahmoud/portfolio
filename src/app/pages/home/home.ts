@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Projects } from "./projects/projects";
-import { Skills } from "../shared/skills/skills";
-import { AboutMe } from '../shared/about-me/about-me';
+import { Skills } from "../../shared/skills/skills";
+import { AboutMe } from '../../shared/about-me/about-me';
 import { FirstContent } from "./first-content/first-content";
 
 @Component({

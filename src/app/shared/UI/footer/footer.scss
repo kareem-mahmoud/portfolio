@@ -1,16 +1,17 @@
-@import '../../../colors';
+@import '../../../../colors';
 
 .footer {
     .footer-container {
         position: relative;
+        padding-bottom: 20px;
         &::before {
             content: "";
             position: absolute;
             bottom: 0px;
             left: 0px;
-            height: 1px;
+            height: 20px;
             width: 100%;
-            background-color: red;
+            background-color: $primary-color;
         }
         .row {
             border-top: 1px solid $grey-color;

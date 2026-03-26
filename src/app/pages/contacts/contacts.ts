@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { aboutMe } from '../module/app-module';
+import { aboutMe } from '../../module/content/data';
 
 @Component({
   selector: 'app-contacts',
@@ -11,8 +11,8 @@ import { aboutMe } from '../module/app-module';
 })
 export class Contacts {
 
-  aboutMeText = signal<string>(aboutMe) ;
-  contactsDetails: any[] = []; 
+  aboutMeText = signal<unknown>(aboutMe) ;
+  contactsDetails: unknown[] = []; 
   
 
 
