@@ -1,6 +1,7 @@
 @import '../../../../colors';
 
 .footer {
+    margin-top: 40px;
     .footer-container {
         position: relative;
         padding-bottom: 20px;
@@ -8,13 +9,19 @@
             content: "";
             position: absolute;
             bottom: 0px;
-            left: 0px;
+            left: 12px;
             height: 20px;
-            width: 100%;
+            width: calc(100% - 24px);
             background-color: $primary-color;
         }
-        .row {
-            border-top: 1px solid $grey-color;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 12px;
+            height: 1px;
+            width: calc(100% - 24px);
+            background-color: $grey-color;
         }
     }
     

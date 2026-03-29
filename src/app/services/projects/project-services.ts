@@ -2,8 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { Project } from '../../module/models/app-models';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const BASE_URL = 'http://portfolio-api.kimostarstarstar.workers.dev/api/projects';
+const BASE_URL = 'https://portfolio-api.kimostarstarstar.workers.dev/api/projects';
 
 @Injectable(
   // {
@@ -16,6 +17,12 @@ export class ProjectServices {
 
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(BASE_URL);
+  }
+
+  getProjectById(id: number): Observable<Project | undefined> {
+    return this.getProjects().pipe(
+      map(projects => projects.find(project => project.id === id))
+    );
   }
 
 

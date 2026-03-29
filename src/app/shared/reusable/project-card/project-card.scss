@@ -53,6 +53,8 @@
             -webkit-line-clamp: 2;
             line-clamp: 2;
             text-overflow: ellipsis;
+            padding-bottom: 0px !important;
+            margin-bottom: 15px !important;
         }
         .description {
             overflow: hidden;
