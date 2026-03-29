@@ -18,7 +18,7 @@ export class Footer {
     { title: 'Kareem Mahmoud' },
     { email: 'Kareem.mahmoud.abd.elhannan@gmail.com' },
     { paragraph: 'Dedicated senior UI Developerwith 8+ years of experience.'},
-    { info: 'Senior UI Developer | Front end (Angular) | WordPress Developer | UI & Graphic Designer.'},
+    { info: 'Senior UI Engineer | Front end (Angular) | WordPress Developer.'},
     { logo: 'km.png'},
     { social: [
       { icon: 'linkedin.svg', url: 'https://www.linkedin.com/in/kareem-elbeltagy', name: 'LinkedIn' },

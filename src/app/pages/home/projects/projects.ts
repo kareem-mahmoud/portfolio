@@ -21,7 +21,9 @@ export class Projects implements OnInit {
   renderProjectsSection() {
     if (!this.projectsService) return;
     this.projectsService.getProjects().subscribe(projects => {
-      this.projectsList.set(projects);
+      // keep only the latest 4 projects and shuffle them
+      const lastFourProjects = projects.slice(-4).sort(() => Math.random() - 0.5); 
+      this.projectsList.set(lastFourProjects);
     });
   }
 

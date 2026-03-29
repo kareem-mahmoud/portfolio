@@ -5,7 +5,7 @@
         </div>
         <div class="item_content">
             <div class="skills p-3 d-flex flex-wrap">
-                @for(skill of projectSkills(); track $index) {
+                @for(skill of projectSkills(); track $index; let last = $last) {
                     <span class="d-flex align-items-center justify-content-center text-color_gray">
                         
                         @switch (skill) {
@@ -82,7 +82,7 @@
                                 ❌
                             }
                         }
-                        <span class="d-inline-block ms-1 text-color_gray">{{skill}},</span>
+                        <span class="d-inline-block ms-1 text-color_gray">{{skill}}@if(!last){,}</span>
                     </span>
                 }
             </div>
@@ -102,9 +102,8 @@
                     target="_blank"
                     >Live <~></a>
                 }
-                <a href="#" class="text-color_white fs-6 d-inline-block live_btn"
+                <a [routerLink]="['/project/', projectId()]" class="text-color_white fs-6 d-inline-block live_btn"
                 aria-label="{{projectName()}}"
-                target="_blank"
                 >More <~></a>
             </div>
 

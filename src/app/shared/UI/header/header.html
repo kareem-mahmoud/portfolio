@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-md">
-                    <a class="navbar-brand text-color_white" routerLink="/">
+                    <a class="navbar-brand text-color_white" href="/" aria-label="Home">
                         <img [src]="logo()" alt="logo" class="logo">
                     </a>
                     <button class="navbar-toggler text-color_white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -13,7 +13,6 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="displayNone">kareem</li>
-                            <template>
                             @for(link of headerLinks(); track $index) {
                                 <li class="nav-item">
                                     <a class="nav-link text-color_white">
@@ -22,7 +21,6 @@
                                     </a>
                                 </li>
                             }
-                            </template>
                         </ul>
                     </div>
                 </nav>

@@ -1,0 +1,27 @@
+@import '../../../colors';
+
+.project_image {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: -1px;
+    transition: all 4s ease-in-out;
+    &:hover {
+        object-position: bottom;
+    }
+}
+
+.live_btn,
+.back_link {
+    padding: 10px 16px;
+    border: 1px solid $primary-color;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $primary-color;
+        color: $white-color !important;
+    }
+}
