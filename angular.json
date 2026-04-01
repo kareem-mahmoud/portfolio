@@ -21,7 +21,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "security": {
-                "autoCsp": true
+              "allowedHosts": [],
+              "autoCsp": false
             },
             "assets": [
               {
