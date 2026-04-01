@@ -12,8 +12,9 @@ import { nav, NavItem } from '../../../module/config/config';
 export class Header {
 
   isScrolled = signal<boolean>(false);
+  isMenuOpen = signal<boolean>(false);
   logo = signal<string>('km.png');
-  headerLinks = signal<NavItem[]>(nav)
+  headerLinks = signal<NavItem[]>(nav);
 
 
   @HostListener('window:scroll')
@@ -22,4 +23,18 @@ export class Header {
     this.isScrolled.set(scrollPosition > 50);
   }
 
+  @HostListener('window:resize')
+  onWindowResize() {
+    if (window.innerWidth >= 768 && this.isMenuOpen()) {
+      this.isMenuOpen.set(false);
+    }
+  }
+
+  toggleMenu() {
+    this.isMenuOpen.update(isOpen => !isOpen);
+  }
+
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
 }
