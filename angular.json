@@ -21,7 +21,6 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "security": {
-              "autoCsp": true
             },
             "assets": [
               {
