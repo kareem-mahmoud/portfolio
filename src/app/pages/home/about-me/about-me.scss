@@ -1,0 +1,30 @@
+@import '../../../../colors';
+
+.about-me_section {
+    .title_container {
+        .title {
+            &::before { 
+                content: "";
+                position: absolute;
+                top: 22px;
+                left: 190px;
+                width: calc(100% - 690px);
+                height: 1px;
+                background-color: $primary-color;
+            }
+        }
+        margin-bottom: 40px;
+    }
+    .about-me_container {
+        .about-me_box {
+        }
+        .item {
+            .img_box {
+                svg {
+                    width: 50% !important;
+                    height: 100% !important;   
+                }
+            }
+        }
+    }
+}

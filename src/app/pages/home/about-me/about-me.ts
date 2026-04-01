@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { ComponentsData } from '../../module/content/data';
+import { ComponentsData } from '../../../module/content/data';
+import { ReButton } from '../../../shared/reusable/re-button/re-button';
 
 
 @Component({
   selector: 'app-about-me',
   standalone: true,
-  imports: [],
+  imports: [ReButton],
   templateUrl: './about-me.html',
   styleUrl: './about-me.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

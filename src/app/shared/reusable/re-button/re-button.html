@@ -1,0 +1,9 @@
+<a 
+    [href]="buttonHref()"
+    [class]="'text-color_white fs-6 d-inline-block live_btn '+ buttonClass()"
+    [aria-label]="buttonAriaLabel()"
+    [target]="buttonTarget()"
+    [attr.disable]="buttonDisabled()"
+>
+    {{buttonText()}} {{buttonIcon()}}
+</a>

@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { nav } from '../../../module/config/config';
+import { ReButton } from '../../reusable/re-button/re-button';
 // import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [],
+  imports: [ReButton],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

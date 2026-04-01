@@ -38,13 +38,15 @@
             <div class="col-md-4">
                 <div class="contact_box">
                     <p class="text-color_white mb-3 mt-5">{{profile[6].hireMe}}</p>
-                    <a href="mailto:kareem.mahmoud.abd.elhannan@gmail.com?subject=Service%20Inquiry&body=Hello%20Kareem," 
-                       class="btn btn-primary inquire_btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                    >
-                        Inquire a Service ->
-                    </a>
+
+                    <app-re-button 
+                        [buttonHref]="'mailto:kareem.mahmoud.abd.elhannan@gmail.com?subject=Service%20Inquiry&body=Hello%20Kareem,'"
+                        [buttonText]="'Inquire a Service'"
+                        [buttonIcon]="'~>'"
+                        [buttonAriaLabel]="'Inquire a Service'"
+                        [buttonTarget]="'_blank'"
+                        rel="noopener noreferrer"
+                    ></app-re-button>
                 </div>
             </div>
             <div class="col-md-12 mt-5 mb-5">

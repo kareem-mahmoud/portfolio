@@ -97,14 +97,23 @@
             <p class="description text-color_gray p-3 m-0 pt-0">{{projectDescription()}}</p>
             <div class="item_controls p-3">
                 @if(projectLiveFlag() === true) {
-                    <a [href]="projectLiveUrl()" class="text-color_white fs-6 d-inline-block live_btn"
-                    aria-label="{{projectName()}}"
-                    target="_blank"
-                    >Live <~></a>
+                    <app-re-button 
+                        [buttonHref]="projectLiveUrl()"
+                        [buttonText]="'Live'"
+                        [buttonIcon]="'<~>'"
+                        [buttonAriaLabel]="projectName()"
+                        [buttonTarget]="'_blank'"
+                    ></app-re-button>
                 }
-                <a [routerLink]="['/project/', projectId()]" class="text-color_white fs-6 d-inline-block live_btn"
-                aria-label="{{projectName()}}"
-                >More <~></a>
+
+                <app-re-button 
+                    [buttonHref]="['/project/', projectId()].join(',')"
+                    [buttonText]="'More'"
+                    [buttonIcon]="'<~>'"
+                    [buttonAriaLabel]="projectName()"
+                    [buttonTarget]="'_blank'"
+                ></app-re-button>
+
             </div>
 
         </div>

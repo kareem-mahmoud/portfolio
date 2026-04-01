@@ -15,13 +15,13 @@ export const ComponentsData = [
             firstContentH1A: 'Kareem is a Senior UI Engineer with 8+ years of experience.',
             firstContentH1B: 'Include 2+ [Angular] front-end based in cairo, Egypt.',
             firstContentP: 'He crafts responsive websites where technologies meet creativity.',
-            firstContentButtonText: 'Contact me ->',
+            firstContentButtonText: 'Contact me',
             firstContentButtonURL: 'contacts',
         },
         aboutMe: {
             aboutMeDisc: aboutMe,
             aboutMeImgURL: 'about-me.png',
-            aboutMeButtonText: 'Read more ->',
+            aboutMeButtonText: 'Read more',
             aboutMeUrl: 'about-me'
         },
         contacts: {
