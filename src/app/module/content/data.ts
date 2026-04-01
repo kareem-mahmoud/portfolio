@@ -1,5 +1,5 @@
-export const aboutMe = `Dedicated Specialist UI Developer with 8+ years of expertise 
-                            in HTML, CSS, JavaScript, and UI/UX design. 
+export const aboutMe = `Dedicated Specialist UI Engineer with 8+ years of expertise 
+                            in HTML, CSS, JavaScript, include 2+ Fron-end Angular development. 
                             Skilled in building intuitive, 
                             user-centered interfaces that improve user experience and 
                             ensure maintainable, high-quality code. 
@@ -16,7 +16,7 @@ export const ComponentsData = [
             firstContentH1B: 'Include 2+ [Angular] front-end based in cairo, Egypt.',
             firstContentP: 'He crafts responsive websites where technologies meet creativity.',
             firstContentButtonText: 'Contact me',
-            firstContentButtonURL: 'contacts',
+            firstContentButtonURL: 'contact',
         },
         aboutMe: {
             aboutMeDisc: aboutMe,

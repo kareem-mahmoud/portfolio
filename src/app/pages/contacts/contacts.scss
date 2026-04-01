@@ -45,6 +45,23 @@
 }
     
 .form_box {
+    .form_feedback {
+        border: 1px solid $grey-color;
+        margin-bottom: 20px;
+        padding: 12px 16px;
+        color: $grey-color;
+
+        &.is-success {
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        &.is-error {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+    }
+
     form {
        background-color: transparent; 
        border: 1px solid $grey-color;

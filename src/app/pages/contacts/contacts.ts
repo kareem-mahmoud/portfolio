@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { aboutMe } from '../../module/content/data';
 
 @Component({
@@ -10,10 +11,12 @@ import { aboutMe } from '../../module/content/data';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Contacts {
+  private readonly route = inject(ActivatedRoute);
 
-  aboutMeText = signal<unknown>(aboutMe) ;
-  contactsDetails: unknown[] = []; 
-  
-
-
+  readonly aboutMeText = signal(aboutMe);
+  readonly status = this.route.snapshot.queryParamMap.get('status');
+  readonly feedbackMessage =
+    this.status === 'success'
+      ? 'Your message has been sent successfully.'
+      : this.route.snapshot.queryParamMap.get('message');
 }

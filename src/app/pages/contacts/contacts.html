@@ -85,18 +85,23 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 position-relative social mb-5">
                         <div class="form_box">
-                            <form action="https://formspree.io/f/xdaaoyyp" method="POST">
+                            @if (feedbackMessage) {
+                                <p class="form_feedback" [class.is-success]="status === 'success'" [class.is-error]="status === 'error'">
+                                    {{ feedbackMessage }}
+                                </p>
+                            }
+                            <form action="/contact.php" method="POST">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your Name" name="Your Name">
+                                    <input type="text" placeholder="Your Name" name="Your Name" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" placeholder="Phone Number" name="Phone Number">
                                 </div>
                                 <div class="form-group">
-                                    <input type="Email" placeholder="E-mail" name="E-mail">
+                                    <input type="Email" placeholder="E-mail" name="E-mail" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea placeholder="Your Inquire" rows="9" name="Your Inquire"></textarea>
+                                    <textarea placeholder="Your Inquire" rows="9" name="Your Inquire" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit">Send Message</button>
