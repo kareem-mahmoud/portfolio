@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ReButton } from '../re-button/re-button';
 
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [ReButton],
   templateUrl: './project-card.html',
   styleUrl: './project-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

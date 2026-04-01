@@ -18,9 +18,13 @@
                                     <p class="text-color_gray mb-5">
                                         {{firstContent().firstContentP}}
                                     </p>
-                                    <a [href]="firstContent().firstContentButtonURL" class="redirect_btn d-inline-block text-color_gray">
-                                        {{firstContent().firstContentButtonText}}
-                                    </a>
+                                    <app-re-button 
+                                        [buttonHref]="firstContent().firstContentButtonURL"
+                                        [buttonText]="firstContent().firstContentButtonText"
+                                        [buttonIcon]="'~>'"
+                                        [buttonAriaLabel]="'Contact-us'"
+                                        [buttonTarget]="'_blank'"
+                                    ></app-re-button>
                                 </div>
                             </div>
 

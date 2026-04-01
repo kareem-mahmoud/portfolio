@@ -20,7 +20,13 @@
                                 <p class="text-color_gray mb-4">
                                     {{aboutMeContent().aboutMeDisc}}
                                 </p>
-                                <a [href]="aboutMeContent().aboutMeUrl" class="redirect_btn d-inline-block text-color_gray">{{aboutMeContent().aboutMeButtonText}}</a>
+
+                                <app-re-button 
+                                    [buttonHref]="aboutMeContent().aboutMeUrl"
+                                    [buttonText]="aboutMeContent().aboutMeButtonText"
+                                    [buttonIcon]="'~>'"
+                                    [buttonAriaLabel]="'about me'"
+                                ></app-re-button>
                             </div>
                         </div>
 
