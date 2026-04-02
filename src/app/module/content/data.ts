@@ -22,7 +22,7 @@ export const ComponentsData = [
             aboutMeDisc: aboutMe,
             aboutMeImgURL: 'about-me.png',
             aboutMeButtonText: 'Read more',
-            aboutMeUrl: 'about-me'
+            aboutMeUrl: '/contact'
         },
         contacts: {
 

@@ -18,15 +18,15 @@ export class AllProjects implements OnInit {
 
   RenderAllProjects() {
     this.projectsService.getProjects().subscribe({
-      next: items => this.allProjects.set(items),
-      error: err => console.error('Error fetching projects:', err)
-    })
+      next: (items: Project[]) => this.allProjects.set(items),
+      error: (err: unknown) => console.error('Error fetching projects:', err)
+    });
 
     console.log(this.allProjects());
     
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.RenderAllProjects();
   }
 

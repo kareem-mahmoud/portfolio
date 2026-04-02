@@ -21,7 +21,7 @@ export class ProjectServices {
 
   getProjectById(id: number): Observable<Project | undefined> {
     return this.getProjects().pipe(
-      map(projects => projects.find(project => project.id === id))
+      map((projects: Project[]) => projects.find((project: Project) => project.id === id))
     );
   }
 

@@ -24,7 +24,7 @@ export class SingleProject implements OnInit {
 
     if (Number.isNaN(id)) return;
 
-    this.projectService.getProjectById(id).subscribe(project => {
+    this.projectService.getProjectById(id).subscribe((project: Project | undefined) => {
       this.project.set(project ?? null);
     });
   }

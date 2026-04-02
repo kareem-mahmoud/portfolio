@@ -107,11 +107,10 @@
                 }
 
                 <app-re-button 
-                    [buttonHref]="['/project/', projectId()].join(',')"
+                    [buttonHref]="'/project/' + projectId()"
                     [buttonText]="'More'"
                     [buttonIcon]="'<~>'"
                     [buttonAriaLabel]="projectName()"
-                    [buttonTarget]="'_blank'"
                 ></app-re-button>
 
             </div>

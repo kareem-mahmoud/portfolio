@@ -97,8 +97,8 @@
 
                 @if (item.liveFlag) {
                     <div class="d-flex flex-row justify-content-start align-items-center gap-2">
-                        <a [href]="item.liveUrl" class="live_btn text-color_white d-inline-block" target="_blank">Visit Live <~></a>
-                        <a href="/all-projects" class="live_btn text-color_white d-inline-block" target="_blank">Visit all projects <~></a>
+                        <a [href]="item.liveUrl" class="live_btn text-color_white d-inline-block" target="_blank" rel="noreferrer">Visit Live <~></a>
+                        <a routerLink="/all-projects" class="live_btn text-color_white d-inline-block">Visit all projects <~></a>
                     </div>
                 }
             </div>

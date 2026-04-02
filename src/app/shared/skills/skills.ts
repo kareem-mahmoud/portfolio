@@ -18,7 +18,7 @@ export class Skills {
 
   constructor() {
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
+      filter((event: unknown): event is NavigationEnd => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.currentUrl.set(event.urlAfterRedirects);
     }); // Subscribe to router events and update currentUrl signal

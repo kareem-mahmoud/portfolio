@@ -32,7 +32,7 @@ export class Header {
   }
 
   toggleMenu() {
-    this.isMenuOpen.update(isOpen => !isOpen);
+    this.isMenuOpen.update((isOpen: boolean) => !isOpen);
   }
 
   closeMenu() {

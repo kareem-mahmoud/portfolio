@@ -1,9 +1,22 @@
-<a 
-    [href]="buttonHref()"
-    [class]="'text-color_white fs-6 d-inline-block live_btn '+ buttonClass()"
-    [aria-label]="buttonAriaLabel()"
-    [target]="buttonTarget()"
-    [attr.disable]="buttonDisabled()"
->
-    {{buttonText()}} {{buttonIcon()}}
-</a>
+@if (isExternalLink()) {
+    <a 
+        [href]="buttonHref()"
+        [class]="'text-color_white fs-6 d-inline-block live_btn ' + buttonClass()"
+        [aria-label]="buttonAriaLabel()"
+        [target]="resolvedTarget()"
+        rel="noreferrer"
+        [attr.aria-disabled]="buttonDisabled()"
+    >
+        {{buttonText()}} {{buttonIcon()}}
+    </a>
+} @else {
+    <a 
+        [routerLink]="buttonHref()"
+        [class]="'text-color_white fs-6 d-inline-block live_btn ' + buttonClass()"
+        [aria-label]="buttonAriaLabel()"
+        [attr.target]="resolvedTarget()"
+        [attr.aria-disabled]="buttonDisabled()"
+    >
+        {{buttonText()}} {{buttonIcon()}}
+    </a>
+}
