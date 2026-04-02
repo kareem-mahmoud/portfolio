@@ -16,7 +16,7 @@ export const ComponentsData = [
             firstContentH1B: 'Include 2+ [Angular] front-end based in cairo, Egypt.',
             firstContentP: 'He crafts responsive websites where technologies meet creativity.',
             firstContentButtonText: 'Contact me',
-            firstContentButtonURL: 'contact',
+            firstContentButtonURL: 'contacts',
         },
         aboutMe: {
             aboutMeDisc: aboutMe,
