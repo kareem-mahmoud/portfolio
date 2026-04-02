@@ -20,8 +20,6 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "security": {
-            },
             "assets": [
               {
                 "glob": "**/*",
