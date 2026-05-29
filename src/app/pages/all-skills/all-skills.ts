@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { Skills } from '../../shared/skills/skills';
 
 @Component({
   selector: 'app-all-skills',
-  imports: [],
+  imports: [Skills],
   templateUrl: './all-skills.html',
   styleUrl: './all-skills.scss',
 })
