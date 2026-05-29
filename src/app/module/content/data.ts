@@ -21,8 +21,17 @@ export const ComponentsData = [
         aboutMe: {
             aboutMeDisc: aboutMe,
             aboutMeImgURL: 'about-me.png',
-            aboutMeButtonText: 'Read more',
+            aboutMeButtonText: 'About me',
             aboutMeUrl: '/contact'
+        },
+        projects:{
+            projectsButtonText: 'View all',
+            projectsUrl: '/all-projects'
+        },
+        Skills:{
+            skillsImgURL: 'skills.png',
+            skillsButtonText: 'View all',
+            skillsUrl: '/skills'
         },
         contacts: {
 

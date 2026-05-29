@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Projects } from "./projects/projects";
-import { Skills } from "../../shared/skills/skills";
 import { AboutMe } from './about-me/about-me';
 import { FirstContent } from "./first-content/first-content";
+import { Skills } from '../../shared/skills/skills';
 
 @Component({
   selector: 'app-home',

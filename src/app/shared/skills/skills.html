@@ -10,6 +10,15 @@
                             <span class="d-inline-block mark_color">#</span>
                             <span class="d-inline-block text-color_white">Skills</span>
                         </h2>
+                        <span class="d-inline-block position-absolute text-color_white view_all">
+                            <app-re-button 
+                                [buttonHref]="skillsContent().skillsUrl"
+                                [buttonText]="skillsContent().skillsButtonText"
+                                [buttonIcon]="'~~>'"
+                                [buttonAriaLabel]="'all skills'"
+                                [buttonClass]="'text_btn'"
+                            ></app-re-button>
+                        </span>
                     </div>
                 </div>
             </section>
@@ -18,7 +27,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                         <div class="item mb-5 h-100">
                             <div class="img_box">
-                                <img src="{{skillsImg()}}" alt="skills">
+                                <!-- <img src="{{skillsImg()}}" alt="skills"> -->
                             </div>
                         </div>
                     </div>

@@ -20,3 +20,13 @@
         color: $white-color !important;
     }
 }
+.text_btn {
+    padding: 0px;
+    border: 0px solid $primary-color;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        background-color: transparent;
+        color: $primary-color !important;
+    }
+}

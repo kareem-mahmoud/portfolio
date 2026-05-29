@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { Project } from '../../../module/models/app-models';
 import { ProjectServices } from '../../../services/projects/project-services'
 import { ProjectCard } from '../../../shared/reusable/project-card/project-card';
+import { ReButton } from '../../../shared/reusable/re-button/re-button';
+import { ComponentsData } from '../../../module/content/data';
 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ProjectCard, RouterLink],
+  imports: [ProjectCard, ReButton],
   providers: [ProjectServices],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
@@ -17,6 +18,7 @@ import { ProjectCard } from '../../../shared/reusable/project-card/project-card'
 export class Projects implements OnInit {
 
   private projectsService = inject(ProjectServices, { self: true });
+  projectsContent = signal(ComponentsData[0].projects);
   projectsList = signal<Project[]>([]);
 
   renderProjectsSection() {
