@@ -5,22 +5,25 @@ import {
   provideEnvironmentInitializer, 
   provideZonelessChangeDetection 
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideEnvironmentInitializer(()  => {
-      console.log('provideEnvironmentInitializer(), from kareem profile');
-    }),
-    provideAppInitializer(() => {
-      console.log('provideAppInitializer(), from kareem profile');
-    }),
+    provideEnvironmentInitializer(() => {}),
+    provideAppInitializer(() => {}),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      withComponentInputBinding(),
+      withInMemoryScrolling({ 
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled', 
+      })
+    ),
     provideHttpClient(withFetch())
   ]
 };
