@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { ReButton } from '../reusable/re-button/re-button';
+import { ComponentsData } from '../../module/content/data';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [ReButton],
   standalone: true,
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
@@ -13,7 +15,8 @@ import { filter } from 'rxjs';
 export class Skills {
   
   private router = inject(Router);
-  skillsImg = signal<string>('skills.png');
+  // skillsImg = signal<string>('skills.png');
+  skillsContent = signal(ComponentsData[0].Skills);
   currentUrl = signal('');
 
   constructor() {

@@ -14,6 +14,21 @@
                 background-color: $primary-color;
             }
         }
+        .view_all {
+            top: 8px;
+            right: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            a {
+                text-decoration: none;
+                color: $white-color !important;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    color: $primary-color !important;
+                }
+            }
+
+        }
         margin-bottom: 40px;
     }
     .skills_container {

@@ -9,7 +9,13 @@
                             <span class="d-inline-block text-color_white">Projects</span>
                         </h2>
                         <span class="d-inline-block position-absolute text-color_white view_all">
-                            <a routerLink="/all-projects">View all ~~></a>
+                            <app-re-button 
+                                [buttonHref]="projectsContent().projectsUrl"
+                                [buttonText]="projectsContent().projectsButtonText"
+                                [buttonIcon]="'~~>'"
+                                [buttonAriaLabel]="'all projects'"
+                                [buttonClass]="'text_btn'"
+                            ></app-re-button>
                         </span>
                     </div>
                 </div>
