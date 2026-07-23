@@ -115,8 +115,8 @@ try {
     $mail->setFrom(SMTP_USERNAME, 'Portfolio website');
     $mail->addAddress(CONTACT_RECIPIENT, 'Kareem Mahmoud');
     $mail->addReplyTo($email, $name);
-    $mail->Subject = 'New portfolio contact form message';
-    $mail->Body = "<h2>New portfolio contact message</h2><p><strong>Name:</strong> {$safeName}</p><p><strong>Phone:</strong> {$safePhone}</p><p><strong>Email:</strong> <a href=\"mailto:{$safeEmail}\">{$safeEmail}</a></p><p><strong>Message:</strong></p><p>{$safeMessage}</p>";
+    $mail->Subject = "New Inquiry from {$safeName}";
+    $mail->Body = "<h2>This message Details</h2><p><strong>Name:</strong> {$safeName}</p><p><strong>Phone:</strong> {$safePhone}</p><p><strong>Email:</strong> <a href=\"mailto:{$safeEmail}\">{$safeEmail}</a></p><p><strong>Message:</strong></p><p>{$safeMessage}</p>";
     $mail->AltBody = "Name: {$name}\nPhone: " . ($phone ?: 'Not provided') . "\nEmail: {$email}\n\nMessage:\n{$message}";
     $mail->send();
 } catch (Throwable $exception) {
