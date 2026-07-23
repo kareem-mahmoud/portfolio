@@ -31,7 +31,7 @@ export const ComponentsData = [
         Skills:{
             skillsImgURL: 'skills.png',
             skillsButtonText: 'View all',
-            skillsUrl: '/skills'
+            skillsUrl: '/all-skills'
         },
         contacts: {
 
