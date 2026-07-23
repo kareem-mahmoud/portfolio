@@ -2,82 +2,96 @@
 
 declare(strict_types=1);
 
-$recipient = 'kareem.mahmoud.abd.elhannan@gmail.com';
-$subject = 'New portfolio contact form message';
-$redirectBase = '/contact';
+use PHPMailer\PHPMailer\Exception as PHPMailerException;
+use PHPMailer\PHPMailer\PHPMailer;
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    header('Location: ' . $redirectBase . '?status=error&message=' . urlencode('Method not allowed.'));
+require __DIR__ . '/mailer/Exception.php';
+require __DIR__ . '/mailer/PHPMailer.php';
+require __DIR__ . '/mailer/SMTP.php';
+
+$recipient = 'kareem.mahmoud.abd.elhannan@gmail.com';
+$redirectPath = '/contact';
+
+function redirect_to_contact(string $status, string $message = ''): void
+{
+    global $redirectPath;
+
+    $parameters = ['status' => $status];
+    if ($message !== '') {
+        $parameters['message'] = $message;
+    }
+
+    header('Location: ' . $redirectPath . '?' . http_build_query($parameters));
     exit;
 }
 
-function clean_input(string $value): string
+function clean_single_line(string $value): string
 {
     return trim(str_replace(["\r", "\n"], ' ', $value));
 }
 
-function redirect_with_message(string $status, string $message = ''): never
-{
-    global $redirectBase;
-
-    $query = ['status' => $status];
-    if ($message !== '') {
-        $query['message'] = $message;
-    }
-
-    header('Location: ' . $redirectBase . '?' . http_build_query($query));
-    exit;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    redirect_to_contact('error', 'Invalid request.');
 }
 
-$name = clean_input($_POST['Your Name'] ?? '');
-$phone = clean_input($_POST['Phone Number'] ?? '');
-$email = clean_input($_POST['E-mail'] ?? '');
+// This invisible field catches automated submissions without affecting visitors.
+if (trim($_POST['website'] ?? '') !== '') {
+    redirect_to_contact('success');
+}
+
+$name = clean_single_line($_POST['Your Name'] ?? '');
+$phone = clean_single_line($_POST['Phone Number'] ?? '');
+$email = clean_single_line($_POST['E-mail'] ?? '');
 $message = trim($_POST['Your Inquire'] ?? '');
-$website = trim($_POST['website'] ?? '');
-
-// Honeypot field: bots fill it, people never see it.
-if ($website !== '') {
-    redirect_with_message('success');
-}
 
 if ($name === '' || $email === '' || $message === '') {
-    redirect_with_message('error', 'Please fill in your name, email, and message.');
+    redirect_to_contact('error', 'Please fill in your name, email, and message.');
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirect_with_message('error', 'Please enter a valid email address.');
+    redirect_to_contact('error', 'Please enter a valid email address.');
 }
 
-$bodyLines = [
-    "Name: {$name}",
-    "Phone: {$phone}",
-    "Email: {$email}",
+$configPath = __DIR__ . '/contact-config.php';
+if (!is_file($configPath)) {
+    error_log('Portfolio contact form: missing contact-config.php.');
+    redirect_to_contact('error', 'Unable to send your message. Please try again later.');
+}
+require $configPath;
+
+$body = implode(PHP_EOL, [
+    'Name: ' . $name,
+    'Phone: ' . $phone,
+    'Email: ' . $email,
     '',
     'Message:',
     $message,
-];
+]);
 
-$body = implode(PHP_EOL, $bodyLines);
+$mailer = new PHPMailer(true);
 
-$host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
-$host = preg_replace('/:\\d+$/', '', $host) ?? '';
-$host = preg_replace('/[^a-z0-9.-]/', '', $host) ?? '';
-$fromAddress = $host !== '' ? 'noreply@' . $host : 'noreply@localhost';
+try {
+    $mailer->isSMTP();
+    $mailer->Host = 'smtp.gmail.com';
+    $mailer->SMTPAuth = true;
+    $mailer->Username = SMTP_USERNAME;
+    $mailer->Password = SMTP_PASSWORD;
+    $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mailer->Port = 587;
+    $mailer->CharSet = PHPMailer::CHARSET_UTF8;
 
-$headers = [
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    "From: Portfolio website <{$fromAddress}>",
-    "Reply-To: {$email}",
-    'X-Mailer: PHP/' . phpversion(),
-];
+    $mailer->setFrom(SMTP_USERNAME, 'Portfolio website');
+    $mailer->addAddress($recipient);
+    $mailer->addReplyTo($email, $name);
 
-$sent = mail($recipient, $subject, $body, implode("\r\n", $headers));
+    $mailer->Subject = 'New portfolio contact form message';
+    $mailer->Body = $body;
+    $mailer->isHTML(false);
 
-if (!$sent) {
-    error_log('Portfolio contact form: mail() failed.');
-    redirect_with_message('error', 'Unable to send your message right now. Please email me directly.');
+    $mailer->send();
+} catch (PHPMailerException $exception) {
+    error_log('Portfolio contact form: PHPMailer failed: ' . $mailer->ErrorInfo);
+    redirect_to_contact('error', 'Unable to send your message. Please try again later.');
 }
 
-redirect_with_message('success');
+redirect_to_contact('success');

@@ -29,6 +29,16 @@
                 "glob": "contact.php",
                 "input": ".",
                 "output": "."
+              },
+              {
+                "glob": "contact-config.php",
+                "input": ".",
+                "output": "."
+              },
+              {
+                "glob": "**/*",
+                "input": "mailer",
+                "output": "mailer"
               }
             ],
             "styles": [
@@ -93,6 +103,16 @@
                 "glob": "contact.php",
                 "input": ".",
                 "output": "."
+              },
+              {
+                "glob": "contact-config.php",
+                "input": ".",
+                "output": "."
+              },
+              {
+                "glob": "**/*",
+                "input": "mailer",
+                "output": "mailer"
               }
             ],
             "styles": [

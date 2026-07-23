@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Contact form secrets
+/contact-config.php
+
 # Node
 /node_modules
 npm-debug.log
