@@ -85,30 +85,30 @@
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-12 position-relative social mb-5">
                         <div class="form_box">
-                            @if (feedbackMessage) {
-                                <p class="form_feedback" [class.is-success]="status === 'success'" [class.is-error]="status === 'error'">
-                                    {{ feedbackMessage }}
+                            @if (feedbackMessage()) {
+                                <p class="form_feedback" [class.is-success]="status() === 'success'" [class.is-error]="status() === 'error'" aria-live="polite">
+                                    {{ feedbackMessage() }}
                                 </p>
                             }
-                            <form action="/contact.php" method="POST">
+                            <form #contactForm="ngForm" (ngSubmit)="sendMessage(contactForm)">
                                 <div aria-hidden="true" class="visually-hidden">
                                     <label for="website">Website</label>
-                                    <input autocomplete="off" id="website" name="website" tabindex="-1" type="text">
+                                    <input autocomplete="off" id="website" name="website" tabindex="-1" type="text" ngModel>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your Name" name="Your Name" required>
+                                    <input type="text" placeholder="Your Name" name="name" maxlength="120" required ngModel>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Phone Number" name="Phone Number">
+                                    <input type="tel" placeholder="Phone Number" name="phone" maxlength="60" ngModel>
                                 </div>
                                 <div class="form-group">
-                                    <input type="Email" placeholder="E-mail" name="E-mail" required>
+                                    <input type="email" placeholder="E-mail" name="email" maxlength="254" required ngModel>
                                 </div>
                                 <div class="form-group">
-                                    <textarea placeholder="Your Inquire" rows="9" name="Your Inquire" required></textarea>
+                                    <textarea placeholder="Your inquiry" rows="9" name="message" maxlength="5000" required ngModel></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit">Send Message</button>
+                                    <button type="submit" [disabled]="isSending()">{{ isSending() ? 'Sending...' : 'Send Message' }}</button>
                                 </div>
                             </form>
                         </div>

@@ -1,10 +1,9 @@
-Options -MultiViews
 RewriteEngine On
 
-# Serve existing files and the PHP contact endpoint directly.
+# Serve existing files (including contact.php and PHPMailer's vendor files) directly.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Let Angular handle client-side routes.
+# Let Angular handle client-side routes such as /contact after the form redirects.
 RewriteRule ^ index.html [L]

@@ -26,6 +26,11 @@
                 "input": "public"
               },
               {
+                "glob": ".htaccess",
+                "input": "public",
+                "output": "."
+              },
+              {
                 "glob": "contact.php",
                 "input": ".",
                 "output": "."
@@ -98,6 +103,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": ".htaccess",
+                "input": "public",
+                "output": "."
               },
               {
                 "glob": "contact.php",

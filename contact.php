@@ -2,167 +2,129 @@
 
 declare(strict_types=1);
 
-use PHPMailer\PHPMailer\Exception as PHPMailerException;
+use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 
 require __DIR__ . '/mailer/Exception.php';
 require __DIR__ . '/mailer/PHPMailer.php';
 require __DIR__ . '/mailer/SMTP.php';
 
-$recipient = 'kareem.mahmoud.abd.elhannan@gmail.com';
-$redirectPath = '/contact';
+const CONTACT_RECIPIENT = 'kareem.mahmoud.abd.elhannan@gmail.com';
 
-function redirect_to_contact(string $status, string $message = ''): void
+header('Content-Type: application/json; charset=utf-8');
+
+function contact_response(int $status, array $payload): never
 {
-    global $redirectPath;
-
-    $parameters = ['status' => $status];
-    if ($message !== '') {
-        $parameters['message'] = $message;
-    }
-
-    header('Location: ' . $redirectPath . '?' . http_build_query($parameters));
+    http_response_code($status);
+    echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-function clean_single_line(string $value): string
+function contact_error_code(Throwable $exception, string $mailerError = ''): string
 {
-    return trim(str_replace(["\r", "\n"], ' ', $value));
+    $details = strtolower($exception->getMessage() . ' ' . $mailerError);
+
+    if (str_contains($details, 'authenticate') || str_contains($details, 'username') || str_contains($details, 'password')) {
+        return 'SMTP_AUTH';
+    }
+
+    if (str_contains($details, 'connect') || str_contains($details, 'timed out')) {
+        return 'SMTP_CONNECT';
+    }
+
+    return 'SMTP_SEND';
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirect_to_contact('error', 'Invalid request.');
+function contact_string(array $data, string $key): string
+{
+    return trim((string) ($data[$key] ?? ''));
 }
 
-// This invisible field catches automated submissions without affecting visitors.
-if (trim($_POST['website'] ?? '') !== '') {
-    redirect_to_contact('success');
+function contact_escape(string $value): string
+{
+    return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-$name = clean_single_line($_POST['Your Name'] ?? '');
-$phone = clean_single_line($_POST['Phone Number'] ?? '');
-$email = clean_single_line($_POST['E-mail'] ?? '');
-$message = trim($_POST['Your Inquire'] ?? '');
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+    contact_response(405, ['message' => 'Only POST requests are allowed.']);
+}
+
+if (!str_contains($_SERVER['CONTENT_TYPE'] ?? '', 'application/json')) {
+    contact_response(415, ['message' => 'The contact form must send JSON data.']);
+}
+
+try {
+    $data = json_decode(file_get_contents('php://input'), true, 512, JSON_THROW_ON_ERROR);
+} catch (JsonException) {
+    contact_response(400, ['message' => 'Invalid JSON data.']);
+}
+
+if (!is_array($data)) {
+    contact_response(400, ['message' => 'Invalid request data.']);
+}
+
+if (contact_string($data, 'website') !== '') {
+    contact_response(200, ['message' => 'Your message has been sent successfully.']);
+}
+
+$name = str_replace(["\r", "\n"], ' ', contact_string($data, 'name'));
+$phone = str_replace(["\r", "\n"], ' ', contact_string($data, 'phone'));
+$email = str_replace(["\r", "\n"], '', contact_string($data, 'email'));
+$message = contact_string($data, 'message');
 
 if ($name === '' || $email === '' || $message === '') {
-    redirect_to_contact('error', 'Please fill in your name, email, and message.');
+    contact_response(422, ['message' => 'Please fill in your name, email, and message.']);
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirect_to_contact('error', 'Please enter a valid email address.');
+    contact_response(422, ['message' => 'Please enter a valid email address.']);
+}
+
+if (strlen($name) > 120 || strlen($phone) > 60 || strlen($email) > 254 || strlen($message) > 5000) {
+    contact_response(422, ['message' => 'One or more fields are too long.']);
 }
 
 $configPath = __DIR__ . '/contact-config.php';
 if (!is_file($configPath)) {
     error_log('Portfolio contact form: missing contact-config.php.');
-    redirect_to_contact('error', 'Unable to send your message. Please try again later.');
+    contact_response(500, ['message' => 'Unable to send your message. Please try again later.']);
 }
+
 require $configPath;
 
-function email_layout(string $heading, string $bodyHtml): string
-{
-    return <<<HTML
-    <div style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; color: #1f1f1f;">
-        <div style="background: #21252b; padding: 24px; border-radius: 8px 8px 0 0;">
-            <h2 style="color: #ffffff; margin: 0; font-size: 20px;">{$heading}</h2>
-        </div>
-        <div style="border: 1px solid #e2e2e2; border-top: none; padding: 24px; border-radius: 0 0 8px 8px;">
-            {$bodyHtml}
-        </div>
-    </div>
-    HTML;
-}
+// Google displays App Passwords in groups of four characters. Remove those
+// visual spaces so either the grouped or ungrouped value works.
+$smtpPassword = preg_replace('/\s+/', '', SMTP_PASSWORD);
 
-function build_owner_email_html(string $name, string $phone, string $email, string $message): string
-{
-    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-    $safePhone = htmlspecialchars($phone !== '' ? $phone : 'Not provided', ENT_QUOTES, 'UTF-8');
-    $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
-    $safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
-
-    return email_layout('New portfolio contact message', <<<HTML
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr>
-                <td style="padding: 6px 0; color: #666; width: 90px;">Name</td>
-                <td style="padding: 6px 0; font-weight: bold;">{$safeName}</td>
-            </tr>
-            <tr>
-                <td style="padding: 6px 0; color: #666;">Phone</td>
-                <td style="padding: 6px 0;">{$safePhone}</td>
-            </tr>
-            <tr>
-                <td style="padding: 6px 0; color: #666;">Email</td>
-                <td style="padding: 6px 0;"><a href="mailto:{$safeEmail}" style="color: #528bff;">{$safeEmail}</a></td>
-            </tr>
-        </table>
-        <p style="color: #666; margin-bottom: 6px;">Message</p>
-        <p style="white-space: pre-wrap; line-height: 1.5;">{$safeMessage}</p>
-        HTML);
-}
-
-function build_visitor_email_html(string $name, string $message): string
-{
-    $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-    $safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
-
-    return email_layout("Thanks for reaching out, {$safeName}!", <<<HTML
-        <p style="line-height: 1.5;">I've received your message and will get back to you as soon as I can.</p>
-        <p style="color: #666; margin: 20px 0 6px;">Your message</p>
-        <p style="white-space: pre-wrap; line-height: 1.5; background: #f7f7f7; padding: 12px; border-radius: 6px;">{$safeMessage}</p>
-        <p style="line-height: 1.5; margin-top: 20px;">— Kareem</p>
-        HTML);
-}
-
-$ownerPlainBody = implode(PHP_EOL, [
-    'Name: ' . $name,
-    'Phone: ' . ($phone !== '' ? $phone : 'Not provided'),
-    'Email: ' . $email,
-    '',
-    'Message:',
-    $message,
-]);
-
-$mailer = new PHPMailer(true);
+$safeName = contact_escape($name);
+$safePhone = contact_escape($phone !== '' ? $phone : 'Not provided');
+$safeEmail = contact_escape($email);
+$safeMessage = nl2br(contact_escape($message));
 
 try {
-    $mailer->isSMTP();
-    $mailer->Host = 'smtp.gmail.com';
-    $mailer->SMTPAuth = true;
-    $mailer->Username = SMTP_USERNAME;
-    $mailer->Password = SMTP_PASSWORD;
-    $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mailer->Port = 587;
-    $mailer->CharSet = PHPMailer::CHARSET_UTF8;
-    $mailer->isHTML(true);
-
-    $mailer->setFrom(SMTP_USERNAME, 'Portfolio website');
-    $mailer->addAddress($recipient);
-    $mailer->addReplyTo($email, $name);
-
-    $mailer->Subject = 'New portfolio contact form message';
-    $mailer->Body = build_owner_email_html($name, $phone, $email, $message);
-    $mailer->AltBody = $ownerPlainBody;
-
-    $mailer->send();
-} catch (PHPMailerException $exception) {
-    error_log('Portfolio contact form: PHPMailer failed: ' . $mailer->ErrorInfo);
-    redirect_to_contact('error', 'Unable to send your message. Please try again later.');
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = SMTP_USERNAME;
+    $mail->Password = $smtpPassword;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
+    $mail->CharSet = PHPMailer::CHARSET_UTF8;
+    $mail->isHTML(true);
+    $mail->setFrom(SMTP_USERNAME, 'Portfolio website');
+    $mail->addAddress(CONTACT_RECIPIENT, 'Kareem Mahmoud');
+    $mail->addReplyTo($email, $name);
+    $mail->Subject = 'New portfolio contact form message';
+    $mail->Body = "<h2>New portfolio contact message</h2><p><strong>Name:</strong> {$safeName}</p><p><strong>Phone:</strong> {$safePhone}</p><p><strong>Email:</strong> <a href=\"mailto:{$safeEmail}\">{$safeEmail}</a></p><p><strong>Message:</strong></p><p>{$safeMessage}</p>";
+    $mail->AltBody = "Name: {$name}\nPhone: " . ($phone ?: 'Not provided') . "\nEmail: {$email}\n\nMessage:\n{$message}";
+    $mail->send();
+} catch (Throwable $exception) {
+    error_log('Portfolio contact form failed: ' . $exception->getMessage());
+    contact_response(500, [
+        'message' => 'Unable to send your message. Please try again later.',
+        'code' => contact_error_code($exception, isset($mail) ? $mail->ErrorInfo : '')
+    ]);
 }
 
-// Best-effort confirmation email back to the visitor; the form has already
-// succeeded from their perspective once the owner notification above sends.
-try {
-    $mailer->clearAddresses();
-    $mailer->clearReplyTos();
-    $mailer->addAddress($email, $name);
-
-    $mailer->Subject = 'Thanks for reaching out';
-    $mailer->Body = build_visitor_email_html($name, $message);
-    $mailer->AltBody = "Hi {$name},\n\nThanks for reaching out! I've received your message and will get back to you soon.\n\nYour message:\n{$message}\n\n— Kareem";
-
-    $mailer->send();
-} catch (PHPMailerException $exception) {
-    error_log('Portfolio contact form: confirmation email failed: ' . $mailer->ErrorInfo);
-}
-
-redirect_to_contact('success');
+contact_response(200, ['message' => 'Your message has been sent successfully.']);

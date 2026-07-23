@@ -36,6 +36,18 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## Contact form / Hostinger deployment
+
+The contact form posts to `contact.php` and uses the bundled PHPMailer files to send the complete submission to `kareem.mahmoud.abd.elhannan@gmail.com` through Gmail SMTP.
+
+Before deploying, create a Google **App Password** for that Gmail account (2-Step Verification must be enabled). Do not use the normal Gmail password.
+
+1. Copy `contact-config.sample.php` to `contact-config.php` and replace the placeholder with the 16-character Google App Password. This file is ignored by Git.
+2. Run `npm run build`.
+3. Upload the **contents** of `dist/portfolio/browser/` to Hostinger's `public_html/` directory, including the `mailer/` folder and `.htaccess` (enables the Angular `/contact` redirect).
+
+No Composer or server terminal is required. Test the deployed form and confirm Gmail receives the message; the visitor's email is set as its Reply-To address.
+
 ## Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
