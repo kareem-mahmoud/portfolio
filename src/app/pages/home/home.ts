@@ -10,7 +10,7 @@ import { Skills } from '../../shared/skills/skills';
   imports: [Projects, Skills, AboutMe, FirstContent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Eager
 })
 export class Home {
 

@@ -7,7 +7,7 @@ import { Footer } from "./shared/UI/footer/footer";
   selector: 'app-root',
   imports: [RouterOutlet, Header, Footer],
   templateUrl: './app.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss'
 })
 export class App {

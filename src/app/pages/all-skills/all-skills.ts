@@ -5,7 +5,7 @@ import { Skills } from '../../shared/skills/skills';
   selector: 'app-all-skills',
   imports: [Skills],
   templateUrl: './all-skills.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './all-skills.scss',
 })
 export class AllSkills {
