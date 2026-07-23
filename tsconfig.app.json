@@ -18,5 +18,13 @@
     "src/**/*.server.ts",
     "src/server.ts",
     "src/app/**/*.server.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }
