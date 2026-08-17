@@ -19,6 +19,9 @@ export interface Project {
 
 export interface Skills {
     id: number,
+    name: string,
     category: Type,
-    items: string[]
+    type: string,
+    level: string,
+    description: string
 }

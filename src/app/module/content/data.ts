@@ -1,5 +1,7 @@
-export const aboutMe = `Dedicated Specialist UI Engineer with 8+ years of expertise 
-                            in HTML, CSS, JavaScript, include 2+ Fron-end Angular development. 
+import { counter } from '../../app';
+
+export const aboutMe = `Dedicated Specialist UI Engineer with ${counter()}+ years of expertise 
+                            in HTML, CSS, JavaScript, include ${counter() - 6}+ Fron-end Angular development. 
                             Skilled in building intuitive, 
                             user-centered interfaces that improve user experience and 
                             ensure maintainable, high-quality code. 
@@ -12,8 +14,8 @@ export const ComponentsData = [
         firstContent: {
             firstContentImg: 'profile.png',
             firstContentImgSlug: 'Currently working as a freelancer.',
-            firstContentH1A: 'Kareem is a Senior UI Engineer with 8+ years of experience.',
-            firstContentH1B: 'Include 2+ [Angular] front-end based in cairo, Egypt.',
+            firstContentH1A: `Kareem is a Senior UI Engineer with ${counter()}+ years of experience.`,
+            firstContentH1B: `Include ${counter() - 6}+ [Angular] front-end based in cairo, Egypt.`,
             firstContentP: 'He crafts responsive websites where technologies meet creativity.',
             firstContentButtonText: 'Contact me',
             firstContentButtonURL: '/contact',

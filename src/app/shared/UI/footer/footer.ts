@@ -1,24 +1,27 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { nav } from '../../../module/config/config';
+import { RouterLink } from '@angular/router';
+import { nav, NavItem } from '../../../module/config/config';
 import { ReButton } from '../../reusable/re-button/re-button';
+import { counter } from '../../../app';
 // import { ContactForm } from "../contact-form/contact-form";
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [ReButton],
+  imports: [ReButton, RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Footer {
 
-  footerLinks = signal<any>(nav);
+  footerLinks = signal<NavItem[]>(nav);
+  currentYear = signal<number>(new Date().getFullYear());
 
   profile = [
     { title: 'Kareem Mahmoud' },
     { email: 'Kareem.mahmoud.abd.elhannan@gmail.com' },
-    { paragraph: 'Dedicated senior UI Developerwith 8+ years of experience.'},
+    { paragraph: `Dedicated senior UI Engineer with ${counter()}+ years of experience.`},
     { info: 'Senior UI Engineer | Front end (Angular) | WordPress Developer.'},
     { logo: 'km.png'},
     { social: [

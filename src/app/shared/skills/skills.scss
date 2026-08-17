@@ -1,6 +1,3 @@
-@use '../../../colors' as *;
-
-
 .skills_section {
     .title_container {
         .title {
@@ -11,7 +8,7 @@
                 left: 190px;
                 width: calc(100% - 690px);
                 height: 1px;
-                background-color: $primary-color;
+                background-color: var(--color-primary);
             }
         }
         .view_all {
@@ -21,10 +18,10 @@
             transition: all 0.3s ease-in-out;
             a {
                 text-decoration: none;
-                color: $white-color !important;
+                color: var(--color-text) !important;
                 transition: all 0.3s ease-in-out;
                 &:hover {
-                    color: $primary-color !important;
+                    color: var(--color-primary-hover) !important;
                 }
             }
 
@@ -32,29 +29,73 @@
         margin-bottom: 40px;
     }
     .skills_container {
-        .item {
+    }
+}
 
+.skills_grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.skill_card {
+    flex: 1 1 15rem;
+    min-width: 0;
+    border: 1px solid var(--color-border);
+
+    .item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item_title {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .skill_heading {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .item_content {
+        flex: 1;
+    }
+
+    .skill_meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        > div {
+            min-width: 0;
+            padding: 0.35rem 0.5rem;
+            border: 1px solid var(--color-border);
         }
-        .skills_box {
-            .item {
-                border: 1px solid $grey-color;
-                .item_title {
-                    border-bottom: 1px solid $grey-color;
-                }
-                .item_content {
 
-                }
-            }
+        dt,
+        dd {
+            margin: 0;
+            line-height: 1.25;
+        }
+
+        dt {
+            color: var(--color-text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        dd {
+            color: var(--color-text);
+            font-size: 0.8rem;
         }
     }
 }
-.skills_section_2 {
-    .item {
-        border: 1px solid $grey-color;
-        .item_title {
-            border-bottom: 1px solid $grey-color;
-        }
-        .item_content {
-        }
+
+@media (max-width: 575.98px) {
+    .skill_card {
+        flex-basis: 100%;
     }
 }
