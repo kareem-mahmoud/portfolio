@@ -1,6 +1,3 @@
-@use '../../../colors' as *; 
-
-
 .contact-me_section {
     .title_container {
         .title {
@@ -11,7 +8,7 @@
                 left: 190px;
                 width: calc(100% - 690px);
                 height: 1px;
-                background-color: $primary-color;
+                background-color: var(--color-primary);
             }
         }
         margin-bottom: 40px;
@@ -27,9 +24,9 @@
         gap: 10px;
         flex-wrap: wrap;
         .item {
-            border: 1px solid $grey-color;
+            border: 1px solid var(--color-border);
             .item_title {
-                border-bottom: 1px solid $grey-color;
+                border-bottom: 1px solid var(--color-border);
             }
             .item_content {
             }
@@ -46,25 +43,25 @@
     
 .form_box {
     .form_feedback {
-        border: 1px solid $grey-color;
+        border: 1px solid var(--color-border);
         margin-bottom: 20px;
         padding: 12px 16px;
-        color: $grey-color;
+        color: var(--color-text-muted);
 
         &.is-success {
-            border-color: #4caf50;
-            color: #4caf50;
+            border-color: var(--color-success);
+            color: var(--color-success);
         }
 
         &.is-error {
-            border-color: #ff6b6b;
-            color: #ff6b6b;
+            border-color: var(--color-danger);
+            color: var(--color-danger);
         }
     }
 
     form {
        background-color: transparent; 
-       border: 1px solid $grey-color;
+       border: 1px solid var(--color-border);
        padding: 20px;
        .form-group {
            background-color: transparent;
@@ -73,22 +70,22 @@
            input[type="email"], textarea {
                 background-color: transparent !important;
                 background: transparent !important;
-                border: 0px solid $grey-color;
+                border: 0 solid var(--color-border);
                 height: 46px;
                 width: 100%;
-                border-bottom: 1px solid $grey-color;
-                color: $grey-color;
+                border-bottom: 1px solid var(--color-border);
+                color: var(--color-text-muted);
            } 
            textarea {
                 resize: none;
                 height: 100px;
                 padding-top: 10px;
-                border-bottom: 0px solid $grey-color;
+                border-bottom: 0 solid var(--color-border);
            }
            input[type="text"]::placeholder,
            input[type="tel"]::placeholder,
            input[type="email"]::placeholder, textarea::placeholder {
-                color: $grey-color;
+                color: var(--color-text-muted);
            }
            input[type="text"]:focus,
            input[type="tel"]:focus,
@@ -96,16 +93,20 @@
                 outline: none;
                 box-shadow: none;
                 border: unset;
-                color: $grey-color;
+                color: var(--color-text-muted);
            }
            button {
                 position: relative;
                 padding: 8px 12px;
-                border: 1px solid #C778DD;
+                border: 1px solid var(--color-primary);
                 text-decoration: none;
                 transition: all 0.3s ease-in-out;
-                background-color: #C778DD;
-                color: #FFFFFF !important;
+                background-color: var(--color-primary);
+                color: var(--color-background) !important;
+                &:hover,
+                &:focus-visible {
+                    background-color: var(--color-primary-hover);
+                }
                 &::before {
                     content: "";
                     position: absolute;
@@ -116,8 +117,9 @@
                     background-color: transparent;
                     transition: all 0.3s ease-in-out;
                 }
-                &:hover::before , &:focus::before {
-                    background-color: #C778DD;
+                &:hover::before,
+                &:focus-visible::before {
+                    background-color: var(--color-primary-hover);
                     right: -25px;
                 }
            }

@@ -1,9 +1,8 @@
-@use '../../../../colors' as *;
 .item {
-    border: 1px solid $grey-color;
+    border: 1px solid var(--color-border);
     height: 100% !important;
     .img_box {
-        border-bottom: 1px solid $grey-color;
+        border-bottom: 1px solid var(--color-border);
         overflow: hidden;
         img {
             display: block;
@@ -17,7 +16,7 @@
     }
     .item_content {
         .skills {
-            border-bottom: 1px solid $grey-color;
+            border-bottom: 1px solid var(--color-border);
         }
         .item_controls {
             display: flex;

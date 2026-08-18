@@ -1,5 +1,10 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Skills } from '../../module/models/app-models';
+import { Observable } from 'rxjs';
+
+const BASE_URL = 'https://portfolio-api.kimostarstarstar.workers.dev/api/skills';
+
 
 @Injectable(
   // {
@@ -8,42 +13,12 @@ import { Skills } from '../../module/models/app-models';
 )
 export class SkillsServices {
   
-  private skills: Skills[] = [
-    {
-      id: 1,
-      category: 'Framework',
-      items: [
-        'Angular', 
-      ]
-    },
-    {
-      id: 2,
-      category: 'Framework',
-      items: [
-        'Angular', 
-      ]
-    },
-    {
-      id: 3,
-      category: 'Framework',
-      items: [
-        'Angular', 
-      ]
-    },
-    {
-      id: 4,
-      category: 'Framework',
-      items: [
-        'Angular', 
-      ]
-    },
-    {
-      id: 5,
-      category: 'Framework',
-      items: [
-        'Angular', 
-      ]
-    }
-  ]
+  http = inject(HttpClient);
+
+  getSkills(): Observable<Skills[]> {
+    return this.http.get<Skills[]>(BASE_URL);
+  }
+
+  
 
 }

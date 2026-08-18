@@ -33,21 +33,39 @@
                     </div>
                     <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12">
                         <div class="skills_box">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4 text-color_white">
-                                        <div class="item mb-5 h-100">
-                                            <div class="item_title p-3">
-                                                <p class="m-0 p-0 text-color_white">Kareem</p>
-                                            </div>
-                                            <div class="item_content p-3">
-                                                kareem kareem kareem
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="skills_grid">
+                                    @for (skillItem of skills(); track skillItem.id) {
 
+                                        <article class="skill_card text-color_white">
+                                            <div class="item h-100">
+                                                <div class="item_title p-3 skill_heading">
+                                                    <app-skill-icon [name]="skillItem.name" />
+                                                    <p class="m-0 p-0 text-color_white">{{ skillItem.name }}</p>
+                                                </div>
+                                                <div class="item_content p-3">
+                                                    <dl class="skill_meta m-0">
+                                                        <div>
+                                                            <dt>Category</dt>
+                                                            <dd>{{ skillItem.category }}</dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt>Type</dt>
+                                                            <dd>{{ skillItem.type }}</dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt>Level</dt>
+                                                            <dd>{{ skillItem.level }}</dd>
+                                                        </div>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    }
                                 </div>
-                            </div>
+                                @if (skillsError(); as error) {
+                                    <p class="text-color_white">{{ error }}</p>
+                                }
                         </div>
                     </div>
                 </div>
@@ -75,45 +93,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-color_white">
-            <div class="item mb-5 h-100">
-                <div class="item_title p-3">
-                    <p class="m-0 p-0 text-color_white">Kareem</p>
-                </div>
-                <div class="item_content p-3">
-                    kareem kareem kareem
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-color_white">
-            <div class="item mb-5 h-100">
-                <div class="item_title p-3">
-                    <p class="m-0 p-0 text-color_white">Kareem</p>
-                </div>
-                <div class="item_content p-3">
-                    kareem kareem kareem
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-color_white">
-            <div class="item mb-5 h-100">
-                <div class="item_title p-3">
-                    <p class="m-0 p-0 text-color_white">Kareem</p>
-                </div>
-                <div class="item_content p-3">
-                    kareem kareem kareem
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-color_white">
-            <div class="item mb-5 h-100">
-                <div class="item_title p-3">
-                    <p class="m-0 p-0 text-color_white">Kareem</p>
-                </div>
-                <div class="item_content p-3">
-                    kareem kareem kareem
-                </div>
-            </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="skills_box">
+                                <div class="skills_grid">
+                                    @for (skillItem of skills(); track skillItem.id) {
+
+                                        <article class="skill_card text-color_white">
+                                            <div class="item h-100">
+                                                <div class="item_title p-3 skill_heading">
+                                                    <app-skill-icon [name]="skillItem.name" />
+                                                    <p class="m-0 p-0 text-color_white">{{ skillItem.name }}</p>
+                                                </div>
+                                                <div class="item_content p-3">
+                                                    <dl class="skill_meta m-0">
+                                                        <div>
+                                                            <dt>Category</dt>
+                                                            <dd>{{ skillItem.category }}</dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt>Type</dt>
+                                                            <dd>{{ skillItem.type }}</dd>
+                                                        </div>
+                                                        <div>
+                                                            <dt>Level</dt>
+                                                            <dd>{{ skillItem.level }}</dd>
+                                                        </div>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    }
+                                </div>
+                                @if (skillsError(); as error) {
+                                    <p class="text-color_white">{{ error }}</p>
+                                }
+                        </div>
         </div>
     </div>
 </section>

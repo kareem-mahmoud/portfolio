@@ -24,11 +24,11 @@
                 <ul class="navbar-nav nav_box">
                     <li class="displayNone">kareem</li>
 
-                    @for(link of footerLinks(); track $index) {
+                    @for(link of footerLinks(); track link.link) {
                         <li class="nav-item">
-                            <a class="nav-link text-color_white">
+                            <a class="nav-link text-color_white" [routerLink]="link.link">
                                 <span class="d-inline-block mark_color">#</span>
-                                <span class="d-inline-block text-color_white">{{link.name}}</span>
+                                <span class="d-inline-block">{{link.name}}</span>
                             </a>
                         </li>
                     }
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-12 mt-5 mb-5">
-                <p class="text-color_gray">© Copyright 2025. Developed by {{profile[0].title}}</p>
+                <p class="text-color_gray">© Copyright {{currentYear()}}. Developed by {{profile[0].title}}</p>
             </div>
         </div> 
     </div>
