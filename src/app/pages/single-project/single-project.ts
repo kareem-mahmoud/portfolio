@@ -3,11 +3,12 @@ import { Project } from '../../module/models/app-models';
 import { ProjectServices } from '../../services/projects/project-services';
 import { Location } from '@angular/common';
 import { ReButton } from '../../shared/reusable/re-button/re-button';
+import { SkillIcon } from '../../shared/reusable/skill-icon/skill-icon';
 
 @Component({
   selector: 'app-single-project',
   standalone: true,
-  imports: [ReButton],
+  imports: [ReButton, SkillIcon],
   providers: [ProjectServices, Location],
   templateUrl: './single-project.html',
   styleUrl: './single-project.scss',
