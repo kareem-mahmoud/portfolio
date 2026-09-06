@@ -16,6 +16,10 @@
     }
     .item_content {
         .skills {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
             min-height: 85px;
             border-bottom: 1px solid var(--color-border);
         }
