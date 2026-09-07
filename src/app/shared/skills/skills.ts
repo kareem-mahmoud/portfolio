@@ -21,7 +21,7 @@ export class Skills implements OnInit{
   
   private router = inject(Router);
   herfPreventDefault = 'javascript:void(0)';
-  // skillsImg = signal<string>('skills.png');
+  skillsImg = signal<string>('skills.png');
   skillsContent = signal(ComponentsData[0].Skills);
   private location$ = inject(Location, { self: true });
   private skillsServices = inject(SkillsServices, { self: true });
