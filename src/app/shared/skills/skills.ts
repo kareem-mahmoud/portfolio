@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { ReButton } from '../reusable/re-button/re-button';
@@ -27,7 +27,9 @@ export class Skills implements OnInit{
   private skillsServices = inject(SkillsServices, { self: true });
   currentUrl = signal(this.router.url);
   skills = signal<Skill[]>([]);
+  computedSkills = computed(() => this.skills().slice(-5).map(skill => ({ ...skill })));
   skillsError = signal<string | null>(null);
+
 
   constructor() {
     this.router.events.pipe(
