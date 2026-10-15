@@ -29,10 +29,24 @@
         margin-bottom: 40px;
     }
     .projects_container {
+        > .row {
+            row-gap: 20px;
+        }
+
         app-project-card {
             display: block;
             width: 100% !important;
             height: 100% !important;
         }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .projects_section .projects_container > .row > [class*="col-"] {
+        margin-bottom: 20px;
+    }
+
+    .projects_section .projects_container > .row > [class*="col-"]:last-child {
+        margin-bottom: 0;
     }
 }
