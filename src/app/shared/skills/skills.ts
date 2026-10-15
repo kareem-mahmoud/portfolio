@@ -19,15 +19,32 @@ import { SkillIcon } from '../reusable/skill-icon/skill-icon';
 })
 export class Skills implements OnInit{
   
+  readonly skillsTitle = ['JavaScript', 'TypeScript', 'Angular', 'HTML5' , 'CSS3' , 'Sass'];
+  readonly skillLevels = ['All', 'Advanced', 'Intermediate', 'Beginner'];
   private router = inject(Router);
+  private location$ = inject(Location, { self: true });
+  private skillsServices = inject(SkillsServices, { self: true });
   herfPreventDefault = 'javascript:void(0)';
   skillsImg = signal<string>('skills.png');
   skillsContent = signal(ComponentsData[0].Skills);
-  private location$ = inject(Location, { self: true });
-  private skillsServices = inject(SkillsServices, { self: true });
+
   currentUrl = signal(this.router.url);
   skills = signal<Skill[]>([]);
-  computedSkills = computed(() => this.skills().slice(-5).map(skill => ({ ...skill })));
+  
+  selectedLevel = signal('All');
+  computedSkills = computed(() => 
+    this.skills().filter(skill =>
+      this.skillsTitle.some(title => skill.name.toLowerCase().includes(title.toLowerCase()))
+    ));
+  TopSkills = computed(() => this.computedSkills().slice(0,6)); 
+
+  filteredSkills = computed(() => {
+    const selectedLevel = this.selectedLevel().toLowerCase();
+    if (selectedLevel === 'all') {
+      return this.skills();
+    }
+    return this.skills().filter(skill => skill.level.trim().toLowerCase() === selectedLevel);
+  });
   skillsError = signal<string | null>(null);
 
 
@@ -67,6 +84,10 @@ export class Skills implements OnInit{
         // If there's no history, navigate to a default page (e.g., home)
         window.location.href = '/';
     }
+  }
+
+  setLevel(level: string) {
+    this.selectedLevel.set(level);
   }
 
 

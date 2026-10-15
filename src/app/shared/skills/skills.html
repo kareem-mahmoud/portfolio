@@ -24,7 +24,7 @@
             </section>
             <section class="skills_container">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                    <div class="home-image-container col-xl-4 col-lg-4 col-md-6 col-sm-12">
                         <div class="item mb-5 h-100">
                             <div class="img_box">
                                 <img src="{{skillsImg()}}" alt="skills">
@@ -34,7 +34,7 @@
                     <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12">
                         <div class="skills_box">
                                 <div class="skills_grid">
-                                    @for (skillItem of computedSkills(); track skillItem.id) {
+                                    @for (skillItem of TopSkills(); track skillItem.id) {
 
                                         <article class="skill_card text-color_white">
                                             <div class="item h-100">
@@ -95,8 +95,21 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="skills_box">
+                                <div class="level_filters" aria-label="Filter skills by level">
+                                    @for (level of skillLevels; track level) {
+                                        <button
+                                            type="button"
+                                            class="level_filter"
+                                            [class.active]="selectedLevel() === level"
+                                            [attr.aria-pressed]="selectedLevel() === level"
+                                            (click)="setLevel(level)"
+                                        >
+                                            {{ level }}
+                                        </button>
+                                    }
+                                </div>
                                 <div class="skills_grid">
-                                    @for (skillItem of skills(); track skillItem.id) {
+                                    @for (skillItem of filteredSkills(); track skillItem.id) {
 
                                         <article class="skill_card text-color_white">
                                             <div class="item h-100">
@@ -123,6 +136,9 @@
                                             </div>
                                         </article>
 
+                                    }
+                                    @if (filteredSkills().length === 0 && !skillsError()) {
+                                        <p class="text-color_white">No skills found for this level.</p>
                                     }
                                 </div>
                                 @if (skillsError(); as error) {

@@ -6,13 +6,17 @@
                     <a class="navbar-brand text-color_white" routerLink="/home" aria-label="Home">
                         <img [src]="logo()" alt="logo" class="logo">
                     </a>
-                    <button class="navbar-toggler text-color_white" type="button" (click)="toggleMenu()"
+                    <button class="navbar-toggler mobile-menu-toggle text-color_white" type="button" (click)="toggleMenu()"
                         aria-controls="navbarNav" [attr.aria-expanded]="isMenuOpen()" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="menu-icon" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
                     </button>
                     <div class="navbar-collapse" id="navbarNav" [class.collapse]="!isMenuOpen()" [class.show]="isMenuOpen()">
                         <ul class="navbar-nav ms-auto">
-                            <li class="displayNone">kareem</li>
+                            <!-- <li class="displayNone">kareem</li> -->
                             @for(link of headerLinks(); track $index) {
                                 <li class="nav-item">
                                     <a class="nav-link text-color_white" [routerLink]="link.link" (click)="closeMenu()">
@@ -21,11 +25,20 @@
                                     </a>
                                 </li>
                             }
+                            <li class="nav-item cv-nav-item">
+                                <a class="cv-download" href="/cv.pdf" download="Kareem-Mahmoud-CV.pdf"
+                                    aria-label="Download CV" (click)="closeMenu()">
+                                    <span aria-hidden="true">↓</span>
+                                    <span>Download CV</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
+                @if (isMenuOpen()) {
+                    <div class="menu-backdrop" aria-hidden="true"></div>
+                }
             </div>
         </div>
     </div>
 </header>
-

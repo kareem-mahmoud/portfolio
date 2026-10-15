@@ -37,3 +37,18 @@
 
     }
 }
+
+@media (max-width: 767.98px) {
+    .footer .nav_box {
+        width: 100%;
+        margin-left: 0 !important;
+        padding-left: 0;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer .nav_box .nav-item,
+    .footer .nav_box .nav-link {
+        text-align: left;
+    }
+}

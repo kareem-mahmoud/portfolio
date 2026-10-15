@@ -24,7 +24,7 @@
                 <p class="text-color_gray mb-3">{{ item.description }}</p>
                 <p class="mb-2"><strong>Category:</strong> {{ item.category }}</p>
                 <p class="mb-2"><strong>Stack:</strong> {{ item.stack }}</p>
-                <p class="d-flex flex-row gap-2 align-items-center justify-content-start mb-4"><strong>Skills:</strong>  
+                <p class="project-skills d-flex flex-row gap-2 align-items-center justify-content-start mb-4"><strong>Skills:</strong>
                     @for(skill of item.skills; track $index; let last = $last) {
                         <span class="d-inline-block text-color_gray">
                             

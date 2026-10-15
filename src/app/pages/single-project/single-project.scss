@@ -4,6 +4,13 @@ app-skill-icon {
     vertical-align: middle;
 }
 
+@media (max-width: 767.98px) {
+    .project-skills {
+        flex-wrap: wrap;
+        row-gap: 0.75rem !important;
+    }
+}
+
 .project_image {
     display: block;
     width: 100%;
